@@ -1,0 +1,98 @@
+{% extends direccion %}
+ {% block titulo %}
+    {% if unLuthier%}
+       Ordenes de trabajo de {{unLuthier}}
+    {% else %}
+      Ordenes de trabajo
+    {% endif %}
+ {% endblock %}
+{% block cabecera %}
+
+	<a href="../controller/agregarReparacion.php" ><button type="button" class="btn btn-success"><i class="fa fa-plus-circle "> </i> Orden de trabajo</button></a>
+
+             
+{% endblock %}
+{% block contenido %}
+  {% if correctamente %}
+        <div class='alert alert-success'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Bien!!</strong> La acción se realizó con exito.
+        </div>
+    {% endif %}
+    {% if error %}
+        <div class='alert alert-warning'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Error!!</strong> Ocurrió algun problema, intentelo de nuevo.
+        </div>
+    {% endif %}
+	<div class="table-responsive">
+        
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Código </th>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>Luthier</th>
+                        <th>Ubicación</th>
+                        <th>Precio</th>
+                        <th>Estado</th>
+                        <th>Administrador</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     {% for reparacion in reparaciones %}
+                      
+                            <tr>
+                                  <td class="gradeA">003-000{{reparacion.idReparacion}}</td>
+                                  <td>{{reparacion.fecha|date("d/m/Y")}}</td>
+                                  <td>{{reparacion.nombreCliente}}</td>
+                                  <td>{{reparacion.nombreLuthier}}</td>
+                                  <td class="center">{{reparacion.ubicacion}}</td>
+                                  {% if reparacion.precio == 0 %}
+                                      <td class="center">Sin presupuestar</td>
+                                  {% elseif reparacion.senia == 0 %}
+                                      <td class="center">${{reparacion.precio}}</td>
+                                  {% else %}
+                                      <td class="center">${{reparacion.precio - reparacion.senia}}</td>
+                                  {% endif %}
+                                  
+
+                                  <td class="center">{{reparacion.estado}}</td>
+                                    
+                                  <td>
+                                      <a href="../controller/verDetalleOrden.php?id={{reparacion.idReparacion}}"<button class="btn btn-success btn-xs"><i class="fa fa-search">  </i> Ver detalles</button></a>
+                                      
+                                          
+                                         
+                                           <a data-href="../controller/eliminarReparacion.php?id={{reparacion.idReparacion}}"  data-toggle="modal" data-target="#confirm-delete" href="#"> <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o ">  </i> Eliminar</button></a>
+
+                                       
+                                   </td>
+                             </tr>
+
+                                
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+         
+        </div>
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          
+                      </div>
+                      <div class="modal-body">
+                          ¿Está seguro de que desea eliminar la orden de trabajo seleccionada?
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                          <a href="#" class="btn btn-danger danger">Eliminar</a>
+                      </div>
+                  </div>
+              </div>
+        </div>
+                           
+{% endblock%}

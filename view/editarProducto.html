@@ -1,0 +1,83 @@
+{% extends direccion %}
+ {% block titulo %}
+      Editar producto 
+ {% endblock %}
+{% block cabecera %}
+     
+{% endblock %}
+{% block contenido %}
+	    <form id="formulario" method="post" action="../controller/editoProducto.php" >
+                                <div class="row">
+                                    <div class="col-md-6">
+                            
+                                           
+                                            <input id="id" name="id" type="hidden" value="{{todo.idProducto}}"/>
+                                    
+                                        <div class="form-group">
+                                            <label>Descripcion:</label>
+                                            <input id="descripcion" name="descripcion" value="{{todo.descripcionProducto}}" class="form-control"  type="text" maxlength="80" required="required" /> 
+                                        </div>
+                                          <div class="form-group">
+                                            <label >Marca</label>
+                                            <select id="marca" name="marca" class="form-control" >
+                                              <option value="{{todo.idMarca}}" selected="selected">{{todo.nombreMarca}}</option>
+                                                {% for marca in marcas %}
+                                                  <option value='{{marca.idMarca}}'>{{marca.nombreMarca}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <label >Stock :</label>
+                                       <div class="form-group">
+                                          {% if todo.stock < 1 %}  
+                                             <input id="stock" name="stock" value="0" class="form-control" type="number" required="required" />
+                                          {% else %}
+                                             <input id="stock" name="stock" value="{{todo.stock}}" class="form-control" type="number" required="required" />
+                                          {% endif %}
+                                        </div>   
+                                       
+                                        
+                                         
+
+                                    </div>
+                                    <div class="col-md-6">
+                                      
+                                      <label >Precio :</label>
+                                        <div class="form-group input-group">
+                                            
+                                            <span class="input-group-addon">$</span>
+                                            <input  id="precio" name="precio" value="{{todo.precio}}" class="form-control"  type="number" step="any" min="1" required="required" />
+                    
+                                        </div>
+                                         <label >Ganancia :</label>
+                                        <div class="form-group input-group">
+                                            
+                                            <span class="input-group-addon">%</span>
+                                            <input  id="ganancia" name="ganancia" value="{{todo.ganancia}}" class="form-control"  type="number" step="any" min="1" required="required" />
+                    
+                                        </div>
+                                       <label >Precio de venta :</label>
+                                        <div class="form-group input-group">
+                                            
+                                            <span class="input-group-addon">$</span>
+                                            <input  id="precioVenta" name="precioVenta" value="{{todo.precioventa}}" class="form-control"   disabled />
+                    
+                                        </div>
+
+                                        
+                                       
+                                        
+                                    </div>
+                                    <div class="col-md-2 ">
+                                        <div class="form-group">
+                                                <button type="submit" class="btn btn-success">Editar Producto</button>
+                                         </div>
+                                    </div>
+                               
+                    </form id="formulario">
+                          <div class="col-md-2 ">
+                               <form id="elformu" method="post"  onsubmit="return false;" >        
+                               <button type="submit" onclick = " return actualizarPrecioVenta()" class="btn btn-success">Calcular Ganancia</button>
+                               </form>
+                          </div>
+
+{% endblock %}

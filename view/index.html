@@ -1,0 +1,175 @@
+{% extends "./menuFron.html" %}
+
+{% block contenido %} 
+    
+      <section id="main-slider" class="no-margin">
+        <div class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#main-slider" data-slide-to="1"></li>
+                <li data-target="#main-slider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+
+                <div class="item active" style="background-image: url(../images/slider/bg1.jpg)">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                             
+                            </div>
+
+                             <div class="col-sm-6  animation animated-item-1">
+                                <div class="slider-img">
+                                    <img src="../images/slider/img1.png" class="img-responsive">
+                                </div>
+                            </div> 
+
+                        </div>
+                    </div>
+                </div><!--/.item-->
+
+                <div class="item" style="background-image: url(../images/slider/bg2.jpg)">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Conocé a nuestros luthiers </h1>
+                                    <a class="btn-slide animation animated-item-2" href="../controller/nuestrosLuthiers.php">Sección Luthería</a>
+                                </div>
+                            </div>
+
+                         <!--    <div class="col-sm-6 hidden-xs animation animated-item-4">
+                                <div class="slider-img">
+                                    <img src="images/slider/img2.png" class="img-responsive">
+                                </div>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div><!--/.item-->
+
+                <div class="item" style="background-image: url(../images/slider/bg3.jpg)">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Variedad de productos</h1>
+                                    <a class="btn-slide animation animated-item-3" href="../controller/contacto.php">Consultanos!</a>
+                                </div>
+                            </div>
+                           <!--  <div class="col-sm-6 hidden-xs animation animated-item-4">
+                                <div class="slider-img">
+                                    <img src="images/slider/img3.png" class="img-responsive">
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+        <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+        <a class="next hidden-xs" href="#main-slider" data-slide="next">
+            <i class="fa fa-chevron-right"></i>
+        </a>
+    </section><!--/#main-slider-->
+    <section id="blog" class="container">
+        
+
+        <div class="blog">
+            <div class="row">
+                 <div class="col-md-9">
+                    <div class="blog-item">
+                        <div class="row">
+                          
+                                
+                            <div class="col-xs-12 col-sm-12 blog-content">
+                                <img class="img-responsive img-blog" src="../images/blog/quienesSomos/2.JPG" width="100%" alt="" />
+                                <h2>¿Quienes Somos?</h2>
+                                        <h3>La Cuerda surgió hace varios años, entre rondas de mates y de la mano de un fuerte sentimiento que nos une a la música. Aquello que empezó siendo tan solo un anhelo, vimos que era posible lograrlo con trabajo y esfuerzo, y allá fuimos.<br>
+                                     Hoy, La Cuerda es un espacio en crecimiento en la ciudad de La Plata. Con más de dos años de funcionamiento, estamos orgullosos de poder ofrecer un espacio para los músicos y luthiers, en formación o profesionales, y para todos aquellos interesados en acercarse a estas maravillosas disciplinas.<br>
+                                     Buscando una distinción, tenemos a la venta instrumentos musicales y accesorios de autor, piezas necesarias para el aprendiz y para el experimentado; además de producciones discográficas de bandas de la región; apoyando así el desarrollo de la cultura local.<br>
+                                    Como tienda joven y con empuje, trabajamos con productos de calidad a precios razonables, brindamos asesoramiento, servicios de reparación de instrumentos, amplificadores y principalmente  nos definimos como un lugar de amigos donde siempre son bienvenidos una charla, un mate, una canción.<br>
+                                    Esperamos que nos conozcan y consulten.<br>
+                                    ¡Buena música para todos!<br>
+                                Carlos y Mariano,<br>
+                                     La Cuerda.
+                                
+                            </div>
+                        </div>    
+                    </div><!--/.blog-item-->
+                
+                </div><!--/.col-md-8-->
+
+                <aside class="col-md-3 ">
+                     
+
+                    <div class="widget categories col-md-offset-3 ">
+                        <h3>Productos</h3>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-offset-1">
+                                <ul class="blog_category">
+                                    <li><a href="#">Accesorios </a></li>
+                                    <li><a href="#">Amplificadores </a></li>
+                                    <li><a href="#">Discos </a></li>
+                                    <li><a href="#">Instrumentos </a></li>
+                                    <li><a href="#">Libros </a></li>
+                                </ul>
+                            </div>
+                        </div>                     
+                    </div><!--/.categories-->
+                         <div class="widget categories col-md-offset-3 ">
+                        <h3>Lutheria</h3>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-offset-1">
+                                <ul class="blog_category">
+                                    <li><a href="#">Maderas</a></li>
+                                    <li><a href="#">Herramientas </a></li>
+                                    <li><a href="#">Accesorios </a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>                     
+                    </div><!--/.categories-->
+                     <div class="col-md-8 col-sm-8 wow fadeInDown col-md-offset-3" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap ">
+                            <a href="https://www.facebook.com/La-Cuerda-219547204891530/?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <h2>La Cuerda</h2>
+                            <h3>Encontranos en facebook!</h3>
+                        </div>
+                    </div><!--/.col-md-4-->
+                    
+
+            </div><!--/.row-->
+        </div>
+    </section><!--/#blog-->
+    
+    <section id="contact-info">
+        <div class="center">                
+            <h2>¿Donde estamos?</h2>
+            <p class="lead">Nos encontramos en La Plata, Buenos Aires, calle 68 entre 3 y 4 n°419. Teléfono:(0221) 458-3573. Email: <a href="mailto:lacuerda.lp@hotmail.com">lacuerda.lp@hotmail.com</a> </p>
+        </div>
+        <div class="gmap-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                       
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4626.270669995282!2d-57.931168141430575!3d-34.92483105821334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e8a7c14b68e5%3A0xaab1269551f6b74a!2sLa+Cuerda!5e0!3m2!1ses-419!2sar!4v1455381247175" width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        
+                    </div>
+
+                  
+
+
+                
+                </div>
+            </div>
+        </div>
+    </section>  <!--/gmap_area -->
+    
+    
+    
+  
+      
+{% endblock%}

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <title>La Cuerda</title>
+    <link rel="shortcut icon" href="../images/ico/favi.gif">
+    <link href="../css/impresion.css" rel="stylesheet" />
+    </pre>
+   
+</head>
+
+<body>
+    <div class="container">
+  
+        <div class="row">
+            
+                <div class="panel ">
+                    <div class="panel-body">
+                         <br>
+                         <br>
+                          <br>
+                           <br>
+                           <br>
+                           <br>
+                          <br>
+                           <br>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="panel">
+                                   <div class="panel-body">
+                                      <div class="col-lg-12 ">
+                                        <div class="col-lg-6 text-lefth"></div>
+                                        <div class="col-lg-6 text-right">
+                                            {{fecha}}
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel">
+                                   <div class="panel-body">
+                                         Señor/es:{{apellido}}  {{nombre}} <br>
+                                         {% if domicilio %}
+                                            Domicilio:{{domicilio}}<br>
+                                         {% else %}
+                                             Domicilio: -<br>
+                                         {% endif %}
+                                        {% if cuit %}
+                                            CUIT:{{cuit}}
+                                        {% else %}
+                                             CUIT: -
+                                        {% endif %}
+                                         
+                                         
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="row">
+                           <div class="col-lg-12">
+                                <div class="panel">
+                                   <div class="panel-body">
+                                    Condición frente al IVA: {{iva}} <br>
+                                    {% if venta == "Contado" or venta == "Cuenta Corriente" %}
+                                             Condición de venta: {{venta}} <br>
+                                    {% else %}
+                                             Condición de venta: Tarjeta <br>
+                                    {% endif%}
+                                   
+                                    {% if remito %}
+                                        Remito n° {{remito}}
+                                    {% endif %}
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <table class="table">    
+                             
+                                    <tr>
+                                        <th>
+                                            
+                                        </th>
+                                        <th>
+                                            Cant.
+                                        </th>
+                                        <th>
+                                            Descripción
+                                        </th>
+                                        <th>
+                                            P. unit.
+                                        </th>
+                                        <th>
+                                            Total
+                                        </th>
+                                        
+                                    </tr>
+                                    
+                                     {% for detalle in detalles %}
+                                            <tr>
+                                                <td>{{detalle.cantidad}}</td>
+                                                <td>{{detalle.descripcionProducto}}</td>
+                                                {% if porcentaje %}
+                                                   <td>$ {{(detalle.precio*porcentaje/100+detalle.precio)|round(0,'ceil')}}</td>
+                                                   <td>$ {{(detalle.subtotal*porcentaje/100+detalle.subtotal)|round(0,'ceil')}}</td>
+                                                {% else %}
+                                                    <td>$ {{detalle.precio|round(0,'ceil')}}</td>
+                                                   <td>$ {{detalle.subtotal|round(0,'ceil')}}</td>
+                                                {% endif %}
+                                             </tr>
+                                    {% endfor %}
+                                   
+                            </table>
+                                <br>
+                                <div class="row text-right">
+                                    <div class="col-xs-2 col-xs-offset-8" style="position: absolute; bottom: 100px; "><strong>
+                                        {% if porcentaje %}
+                                              TOTAL: $ {{(total*porcentaje/100+total)|round(0,'ceil')}}
+                                        {% else %}
+                                              TOTAL: $ {{total|round(0,'ceil')}}
+                                        {% endif %}
+  
+                                    
+                                    </strong></div>
+                                    
+                                </div>
+                       </div>
+                        
+                        </div>
+                    </div>
+                    
+               
+      
+        </div>
+    </div>        
+
+
+</body>
+<body>
+    <div class="container">
+  
+        <div class="row">
+            
+                <div class="panel ">
+                    <div class="panel-body">
+                         <br>
+                         <br>
+                          <br>
+                           <br>
+                           <br>
+                           <br>
+                          <br>
+                           <br>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="panel">
+                                   <div class="panel-body">
+                                      <div class="col-lg-12 ">
+                                        <div class="col-lg-6 text-lefth"></div>
+                                        <div class="col-lg-6 text-right">
+                                            {{fecha}}
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel">
+                                   <div class="panel-body">
+                                         Señor/es:{{apellido}}  {{nombre}} <br>
+                                         {% if domicilio %}
+                                            Domicilio:{{domicilio}}<br>
+                                         {% else %}
+                                             Domicilio: -<br>
+                                         {% endif %}
+                                        {% if cuit %}
+                                            CUIT:{{cuit}}
+                                        {% else %}
+                                             CUIT: -
+                                        {% endif %}
+                                         
+                                         
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="row">
+                           <div class="col-lg-12">
+                                <div class="panel">
+                                   <div class="panel-body">
+                                    Condición frente al IVA: {{iva}} <br>
+                                    {% if venta == "Contado" or venta == "Cuenta Corriente" %}
+                                             Condición de venta: {{venta}} <br>
+                                    {% else %}
+                                             Condición de venta: Tarjeta <br>
+                                    {% endif%}
+                                   
+                                    {% if remito %}
+                                        Remito n° {{remito}}
+                                    {% endif %}
+                                  </div>
+                               </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <table class="table">    
+                             
+                                    <tr>
+                                        <th>
+                                            
+                                        </th>
+                                        <th>
+                                            Cant.
+                                        </th>
+                                        <th>
+                                            Descripción
+                                        </th>
+                                        <th>
+                                            P. unit.
+                                        </th>
+                                        <th>
+                                            Total
+                                        </th>
+                                        
+                                    </tr>
+                                    
+                                     {% for detalle in detalles %}
+                                            <tr>
+                                                <td>{{detalle.cantidad}}</td>
+                                                <td>{{detalle.descripcionProducto}}</td>
+                                                {% if porcentaje %}
+                                                   <td>$ {{(detalle.precio*porcentaje/100+detalle.precio)|round(0,'ceil')}}</td>
+                                                   <td>$ {{(detalle.subtotal*porcentaje/100+detalle.subtotal)|round(0,'ceil')}}</td>
+                                                {% else %}
+                                                    <td>$ {{detalle.precio|round(0,'ceil')}}</td>
+                                                   <td>$ {{detalle.subtotal|round(0,'ceil')}}</td>
+                                                {% endif %}
+                                             </tr>
+                                    {% endfor %}
+                                   
+                            </table>
+                                <br>
+                                <div class="row text-right">
+                                    <div class="col-xs-2 col-xs-offset-8" style="position: absolute; bottom: 100px; "><strong>
+                                        {% if porcentaje %}
+                                              TOTAL: $ {{(total*porcentaje/100+total)|round(0,'ceil')}}
+                                        {% else %}
+                                              TOTAL: $ {{total|round(0,'ceil')}}
+                                        {% endif %}
+  
+                                    
+                                    </strong></div>
+                                    
+                                </div>
+                       </div>
+                        
+                        </div>
+                    </div>
+                    
+               
+      
+        </div>
+    </div>        
+
+
+</body>
+</html>

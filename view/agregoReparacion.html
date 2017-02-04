@@ -1,0 +1,52 @@
+{% extends direccion %}
+ {% block titulo %}
+      Nueva Orden de Trabajo
+ {% endblock %}
+{% block cabecera %}
+
+{% endblock %}
+{% block contenido %}
+	<form method="post" action="../controller/agregoReparacion.php" >
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input id="nombre" name="nombre" class="form-control" placeholder="Nombre de cliente*" type="text" maxlength="30" required="required"/> 
+                </div>
+                <div class="form-group">
+                    <input id="telefono" name="telefono" class="form-control" placeholder="Teléfono de cliente*" type="number" maxlength="40" required="required"/> 
+                </div>
+                <div class="form-group">
+                    <input id="email" name="email" class="form-control" placeholder="Email de cliente" type="email" maxlength="40"/> 
+                </div>
+                <div class="form-group">
+                    <input id="instrumento" name="instrumento" class="form-control" placeholder="Instrumento*" type="text" maxlength="40" required="required"/> 
+                </div>
+                <div class="form-group">
+                    <input id="marcaModelo" name="marcaModelo" class="form-control" placeholder="Marca/Modelo*" type="text" maxlength="40" required="required"/> 
+                </div>
+               <div class="form-group">
+                    <input id="nroSerie" name="nroSerie" class="form-control" placeholder="N° de serie" type="text" maxlength="50"/> 
+                </div>
+                 
+               
+            </div>
+            <div class="col-md-6">
+                
+                <div class="form-group">
+                    <input id="senia" name="senia" class="form-control" placeholder="Seña" type="number" maxlength="30"/> 
+                </div>
+                 <div class="form-group">
+                    
+                    <textarea id="notas" name="notas" class="form-control" placeholder="Notas*" type="text" rows="8" maxlength="250" required="required" ></textarea>
+                </div>
+                <div class="form-group">
+                        <button type="submit" class="btn btn-success">Agregar Orden</button>
+                 </div>
+                 
+                
+            </div>
+            
+        </div>
+    </form>
+
+{% endblock %}

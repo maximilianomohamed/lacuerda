@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>La Cuerda</title>
+	
+	<!-- core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
+    <link href="../css/prettyPhoto.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/responsive.css" rel="stylesheet">
+     
+    <link rel="shortcut icon" href="../images/ico/favi.gif">
+   
+</head><!--/head-->
+
+<body class="homepage">
+
+    <header id="header">
+      
+
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../controller/indexcontroller.php"><img src="../images/logo.png" alt="logo"></a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li {% if index %} class="active" {% endif %}><a href="../controller/indexcontroller.php">Inicio</a></li>
+                        <li {% if producto %} 
+                                    class="active dropdown" 
+                             {% else %} class=" dropdown"
+                             {% endif %}>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Productos <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../controller/productos.php?accesorios">Accesorios</a></li>
+                                <li><a href="../controller/productos.php?amplificadores">Amplificadores</a></li>
+                                <li><a href="../controller/productos.php?discos">Discos</a></li>
+                                <li><a href="../controller/productos.php?instrumentos">Instrumentos</a></li>
+                                <li><a href="../controller/productos.php?libros">Libros</a></li>
+                               
+                            </ul>
+                        </li>
+                       
+                         <li {% if lutheria %} 
+                                    class="active dropdown" 
+                             {% else %} class=" dropdown"
+                             {% endif %}>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lutheria <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                
+                                <li><a href="../controller/lutheria.php?maderas">Maderas</a></li>
+                                <li><a href="../controller/lutheria.php?herramientas">Herramientas</a></li>
+                                <li><a href="../controller/lutheria.php?accesorios">Accesorios</a></li>
+                                
+                            </ul>
+                        </li>
+                        
+                         <li {% if nuestrosLuthiers %} class="active" {% endif %}><a href="../controller/nuestrosLuthiers.php">Nuestros Luthiers</a></li>
+                         <li {% if contacto %} class="active" {% endif %}><a href="../controller/contacto.php">Contacto</a></li>                      
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+		
+    </header><!--/header-->
+    {% block contenido %}{% endblock %}    
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; La Cuerda 2016 - Creada por <a target="_blank" href="http://jhuxi.com.ar" title="Creadores de la página">Jhuxi Soluciones Informáticas</a>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="../controller/indexcontroller.php">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Luthiers</a></li>
+                        <li><a href="../controller/nuestrosLuthiers.php">Nuestros Luthiers</a></li>
+                        <li><a href="../controller/contacto.php">Contacto</a></li>
+                        <li><a href="../controller/ingresar.php">Ingresar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.prettyPhoto.js"></script>
+    <script src="../js/jquery.isotope.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/wow.min.js"></script>
+</body>
+</html>

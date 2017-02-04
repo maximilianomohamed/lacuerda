@@ -1,0 +1,85 @@
+{% extends "./menuBack.html" %}
+
+{% block cabecera %}Funcionalidades{% endblock%}
+
+{% block contenido %} 
+
+
+    <ul class="timeline">
+        <li>
+            <div class="timeline-badge"><i class="fa fa-bar-chart-o"></i> <h4> Movimientos Mensuales</h4>
+            </div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <h5 class="timeline-title">Mes Actual</h5>
+                    
+                </div>
+                <div class="timeline-body">
+                    <p>Dentro del mes actual se encontrará el total de ingresos del mes en curso junto con sus egresos y la ganancia hasta el día de la fecha, con la posibilidad de ver el detalle de cada uno de los egresos registrados en el mes.</p>
+
+                </div>
+                 <div class="timeline-heading">
+                    <h5 class="timeline-title">Meses anteriores</h5>
+                    
+                </div>
+                <div class="timeline-body">
+                    <p>Dentro de meses anteriores se encontrará un cuadro comparativo con posibilidad de ver los detalles de ingresos y egresos de los meses respectivamente, junto con la ganancia que dejó cada uno.</p>
+                    
+                </div>
+            </div>
+        </li>
+        <li class="timeline-inverted">
+            <div class="timeline-badge warning"><i class="fa fa-tasks"></i><h4>Lista de productos</h4>
+            </div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <h4 class="timeline-title"></h4>
+                </div>
+                <div class="timeline-body">
+                    <p>Dentro de esta sección se podrán realizar las operaciones de alta, modificacion y eliminación de los productos que se manejan en el negocio.</p>
+                    
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="timeline-badge danger"><i class="fa fa-tasks"></i><h4>Lista de Marcas</h4>
+            </div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <h4 class="timeline-title"></h4>
+                </div>
+                <div class="timeline-body">
+                    <p>Dentro de esta sección se podrán realizar las operaciones de alta, modificacion y eliminación de las marcas pertenecientes a los productos que se manejan en el negocio.</p>
+                </div>
+            </div>
+        </li>
+        
+        <li>
+            <div class="timeline-badge info"><i class="fa fa-bar-chart-o"></i><h4>Caja diaria</h4>
+            </div>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <h4 class="timeline-title"></h4>
+                </div>
+                <div class="timeline-body">
+                    <p>Dentro de esta sección se podrá llevar la gestion de movimientos diarios de caja, pudiendo ver el total de ingresos del día y teniendo la opción de cerrar la caja para que se sume su total dentro de los movimientos del mes en curso.</p>
+                    <hr>
+                    
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <h4 class="timeline-title">Contacto</h4>
+                </div>
+                <div class="timeline-body">
+                    <p>Desarrollado por <a href="http://www.jhuxi.com.ar">Jhuxi Soluciones Informática</a>.</p>
+                    <p>Mohamed Maximiliano tel.: 0221-15-5237-499 </p>
+                </div>
+            </div>
+        </li>
+       
+    </ul>
+      
+{% endblock%}

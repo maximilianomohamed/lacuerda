@@ -1,0 +1,128 @@
+{% extends direccion %}
+ {% block titulo %}
+      Agregar datos
+ {% endblock %}
+{% block cabecera %}
+    <a href="../controller/realizarVenta.php"><button type="submit" class="btn btn-primary"><i class="fa fa-reply-all"></i> Volver </button></a>
+    <a data-toggle="modal" data-target="#confirm-delete" href="#"><button class="btn btn-danger"><i class="fa fa-times-circle "></i> Finalizar </button></a>
+
+
+{% endblock %}
+{% block contenido %}
+		<form method="post" action="../controller/imprimirFactura.php" >
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input id="nombre" name="nombre"  class="form-control" placeholder="Nombre de cliente*"  type="text" maxlength="30" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="apellido" name="apellido" class="form-control" placeholder="Apellido del cliente*" type="text" maxlength="30" required/> 
+                                        </div>
+                                          <div class="form-group">
+                                           <input id="domicilio" name="domicilio"  class="form-control" type="text" maxlength="30" placeholder="Domicilio del cliente (no obligatorio)*" />
+                                        </div>       
+                                        <div class="form-group">
+                                           <input id="cuit" name="cuit"  class="form-control" type="text"  maxlength="13" placeholder="CUIT formato 11-11111111-1 (no obligatorio)*" />
+                                        </div> 
+                                    
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Condición frente al IVA</label>
+                                            <select class="form-control" id="iva" name="iva">
+                                                <option>Consumidor Final</option>
+                                                <option>Inscripto</option>
+                                                <option>No Resp.</option>
+                                                <option>Exento</option>
+                                                <option>Resp. Mon.</option>
+                                            </select>
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Condición de venta:</label>
+                                            <select class="form-control" id="venta" name="venta">
+                                                <option value="Contado">Contado</option>
+                                                <option value="Cuenta Corriente">Cuenta Corriente</option>
+                                                {% for cuota in cuotas %}
+                                             
+                                                    <option value="{{cuota.cantCuotas}}">En {{cuota.cantCuotas}} cuotas</option>
+                                                  
+                                                 {% endfor %}
+                        
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                           <input id="remito" name="remito"  class="form-control" type="number"  maxlength="20" placeholder="Nro de Remito (no obligatorio)*"/>
+                                        </div> 
+                            
+                                       
+                                        
+                                    </div>
+                                    <div class="col-md-12 ">
+                                        <div class="col-md-6 ">
+                                          <button type="submit" class="btn btn-success"><i class="fa fa-print " ></i> Realizar factura</button>
+
+                                    </div>
+            </form>
+                                     
+		</div>
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+                  <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-exclamation-triangle fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                  
+                                        <h2><div>Seleccione la forma de pago con la cual se realizó la venta para finalizar la misma.</div></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                              <form method="post" action="../controller/finalizarCompra.php" >
+                                <div class="row">
+                                   
+                              
+                                    <div class="col-md-6">
+                                      
+                                         <div class="form-group">
+                                  
+                                            <select class="form-control" id="venta" name="venta">
+                                                <option value="Contado">Contado</option>
+                                                <option value="Cuenta Corriente">Cuenta Corriente</option>
+                                              
+                                                {% for cuota in cuotas %}
+                                             
+                                                    <option value="{{cuota.cantCuotas}}">En {{cuota.cantCuotas}} cuotas</option>
+                                                  
+                                                 {% endfor %}
+                        
+
+                                            </select>
+                                        </div>
+          
+                                        
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="col-md-12 ">
+                                          <button type="submit" class="btn btn-warning"> Finalizar venta</button>
+                                          <a data-dismiss="modal">
+                                           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button></a>
+                                          </div>
+                                    </div>
+                       </form>
+                              
+                             
+                            
+                          </div>
+                   </div>
+                  
+              </div>
+        </div>
+
+
+
+{% endblock %}

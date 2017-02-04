@@ -1,0 +1,100 @@
+{% extends "./menuImpresiones.html" %}
+
+{% block contenido %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                               
+                                <div class="panel-body">
+                                    
+                                    <div class="col-lg-12 ">
+                                        <div class="col-lg-6 text-lefth">
+                                        
+                                          <h4>Orden de trabajo 003-000{{detalles.idReparacion}}</h4>
+                                        </div>
+                                          <div class="col-lg-6 text-right">
+                                        
+                                                <h5> Fecha: {{fecha}}</h5>
+                                             </div> 
+                                        <div class="col-lg-12">
+                                            <div class="slider-img">
+                                                    <img src="../images/factura/facturaLogo.jpg" >
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                      
+                                
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+        	    
+                       <div class="col-sm-12">
+                            
+                            
+                        </div>
+
+                        
+
+
+
+                              
+                           
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                               
+                                <div class="panel-body">
+                                     <h5>Datos del cliente: </h5>
+                                    <h5>Nombre:  {{detalles.nombreCliente}}</h5>
+                                    <h5>Teléfono: {{detalles.telefonoCliente}}</h5>
+                                    {% if detalles.emailCliente != ""%}
+                                         <h5>Mail: {{detalles.emailCliente}}</h5>
+                                    {% endif %}
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                               
+                                <div class="panel-body">
+                                    <h5>Detalles: </h5>
+                                    <h5>Instrumento:  {{detalles.instrumento}}</h5>
+                                    <h5>Marca/Modelo: {{detalles.marcaModelo}}</h5>
+                                    {% if detalles.nroSerie != 0 %}
+                                         <h5>N° de serie: {{detalles.nroSerie}}</h5>
+                                    {% endif %}
+                                    {% if detalles.senia != 0 %}
+                                         <h5>Seña: $ {{detalles.senia}}</h5>
+                                    {% endif %}
+                                    <h5>Notas:  {{detalles.nota}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                  
+            </div>
+        </div>
+    </div>
+    
+</div>
+   
+            
+
+
+           
+{% endblock %}

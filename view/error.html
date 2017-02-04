@@ -1,0 +1,14 @@
+{% extends direccion %}
+ {% block titulo %}
+      Error!!
+ {% endblock %}
+{% block cabecera %}
+
+{% endblock %}
+{% block contenido %}
+	<p class="titulo"> {{error_titulo}} </p>
+
+		<p> {{error_descripcion}} </p>
+
+		<form><input type="button" value="{{error_boton}}" onClick="{{error_link}}"></form>
+{% endblock%}

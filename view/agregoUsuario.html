@@ -1,0 +1,42 @@
+{% extends direccion %}
+ {% block titulo %}
+      Agregar usuario nuevo
+ {% endblock %}
+{% block cabecera %}
+    {% if yaExiste %}
+        <div class='alert alert-warning alert-dismissable'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Cuidado!!</strong> El usuario que quiere agregar ya existe.
+        </div>
+    {% endif %}
+{% endblock %}
+{% block contenido %}
+	<form method="post" action="../controller/agregoUsuario.php" >
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input id="nombre" name="nombre" class="form-control" placeholder="Nombre de Usuario*" type="text" maxlength="40" required="required"/> 
+                </div>
+                 <div class="form-group">
+                    <input id="contrasenia" name="contrasenia" class="form-control" placeholder="Contraseña*" type="password" maxlength="40" required="required"/> 
+                </div>
+             
+            </div>
+            <div class="col-md-6">
+                   <div class="form-group">
+                      <select class="form-control" id="rol" name="rol">                      
+                             <option value='admin'>Administrador</option>
+                             <option value='empleado'>Empleado</option>
+
+                      </select>
+                  </div>
+                  <div class="form-group">
+                        <button type="submit" class="btn btn-success">Agregar Usuario</button>
+                 </div>
+                
+            </div>
+            
+        </div>
+    </form>
+
+{% endblock %}

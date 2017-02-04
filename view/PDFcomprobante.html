@@ -1,0 +1,134 @@
+{% extends "./menuImpresiones.html" %}
+
+{% block contenido %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                               
+                                <div class="panel-body">
+                                    
+                                    <div class="col-lg-12 ">
+                                        <div class="col-lg-6 text-lefth">
+                                        
+                           
+                                        </div>
+                                          <div class="col-lg-6 text-right">
+                                        
+                                                <h5> Fecha: {{fecha}}</h5>
+                                             </div> 
+                                        <div class="col-lg-12">
+                                            <div class="slider-img">
+                                                    <img src="../images/factura/facturaLogo.jpg" >
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                
+                       <div class="col-sm-12">
+                            
+                            
+                        </div>
+        
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                               
+                                <div class="panel-body">
+                                    Señor/es: {{nombre}}  {{apellido}} <br>
+                                    
+                                    {% if domicilio != ""%}
+                                         Domicilio: {{domicilio}} <br>
+                                    {% endif %}
+                                   Condición frente al IVA: {{iva}} <br>
+                                    {% if venta == "Contado" or venta == "Cuenta Corriente" %}
+                                             Condición de venta: {{venta}} <br>
+                                    {% else %}
+                                             Condición de venta: Tarjeta <br>
+                                    {% endif%}
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                               
+                                <div class="panel-body">
+                        
+                            <table class="table">    
+                             
+                                    <tr>
+                                        <th>
+                                            
+                                        </th>
+                                        <th>
+                                            Cant.
+                                        </th>
+                                        <th>
+                                            Descripción
+                                        </th>
+                                        <th>
+                                            P. unit.
+                                        </th>
+                                        <th>
+                                            Total
+                                        </th>
+                                        
+                                    </tr>
+                                    
+                                     {% for detalle in detalles %}
+                                            <tr>
+                                                <td>{{detalle.cantidad}}</td>
+                                                <td>{{detalle.descripcionProducto}}</td>
+                                                {% if porcentaje %}
+                                                   <td>$ {{(detalle.precio*porcentaje/100+detalle.precio)|round(0,'ceil')}}</td>
+                                                   <td>$ {{(detalle.subtotal*porcentaje/100+detalle.subtotal)|round(0,'ceil')}}</td>
+                                                {% else %}
+                                                    <td>$ {{detalle.precio|round(0,'ceil')}}</td>
+                                                   <td>$ {{detalle.subtotal|round(0,'ceil')}}</td>
+                                                {% endif %}
+                                             </tr>
+                                    {% endfor %}
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td>TOTAL:</td>
+                                                {% if porcentaje %}
+                                                      $ {{(total*porcentaje/100+total)|round(0,'ceil')}}
+                                                {% else %}
+                                                      <td>$ {{total|round(0,'ceil')}} </td>
+                                                {% endif %}
+                                                <td> </td>
+                                             </tr>
+                            </table>
+                                
+        
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                  
+            </div>
+        </div>
+    </div>
+    
+</div>
+   
+            
+
+
+           
+{% endblock %}

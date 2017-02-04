@@ -1,0 +1,194 @@
+{% extends direccion %}
+ {% block titulo %}
+      Detalle Orden de trabajo nro 003-000{{detalles.idReparacion}}
+ {% endblock %}
+{% block cabecera %}
+    {% if detalles.estado != "Entregado" %}
+     <a href="../controller/editarReparacion.php?id={{detalles.idReparacion}}" ><button type="button" class="btn btn-success"><i class="fa fa-pencil ">  </i> Modificar</button></a> 
+     {% endif %}
+     
+        <a href="../controller/imprimirReparacion.php?id={{detalles.idReparacion}}"  ><button type="button" class="btn btn-success"><i class="fa fa-print ">  </i> Imprimir</button></a>
+     
+     {% if detalles.pagoLuthier == "Impago" and detalles.nombreLuthier != "-" and detalles.manoDeObra != 0 %}
+        <a data-toggle="modal" data-target="#confirm-pagar" href="#"><button class="btn btn-primary"><i class="fa fa-gavel "></i> Pagar a Luthier </button></a>
+        
+     {% endif %}
+     {% if detalles.estado == "Para Retirar" %}
+
+        <a data-toggle="modal" data-target="#confirm-retirar" href="#"> <button class="btn btn-warning"><i class="fa fa-thumbs-o-up ">  </i> Retirar reparación</button></a>
+         
+     {% endif %}
+{% endblock %}
+{% block contenido %}
+  {% if correcto %}
+        <div class='alert alert-success'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Bien!!</strong> La acción se realizó con exito.
+        </div>
+    {% endif %}
+
+    <div class="col-lg-12">
+                        <div class="panel-body">
+                                <div class="list-group col-lg-6">
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">{{detalles.nombreCliente}}</span>
+                                        <i class="fa fa-fw fa-user"></i> Nombre de Cliente
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">{{detalles.telefonoCliente}}</span>
+                                        <i class="fa fa-fw fa-phone"></i>Teléfono del cliente
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">{% if detalles.emailCliente == "" %}Sin email{% else %} {{detalles.emailCliente}}{% endif %}</span>
+                                        <i class="fa fa-fw fa-envelope-o"></i> Email del cliente
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">{{detalles.instrumento}}</span>
+                                        <i class="fa fa-fw fa-music"></i> Instrumento
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">{{detalles.marcaModelo}}</span>
+                                        <i class="fa fa-fw fa-bookmark-o"></i>Marca/Modelo
+                                    </a>
+                                     <a href="#" class="list-group-item">
+                                        <span class="badge">{{detalles.pagoLuthier}}</span>
+                                        <i class="fa fa-fw fa-gavel"></i> Pago de Luthier
+                                    </a>
+                                     <a href="#" class="list-group-item">
+                                        <span class="badge">{% if detalles.nroSerie == 0 %}Sin Nro de serie {% else %} {{detalles.nroSerie}}{% endif %}</span>
+                                        <i class="fa fa-fw fa-sliders"></i> Nro de serie
+                                    </a>
+                                </div>
+                                 <div class="list-group col-lg-6">
+                                    
+                                    
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">{{detalles.nombreLuthier}}</span>
+                                        <i class="fa fa-fw fa-bullseye"></i> Luthier
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">{{detalles.estado}}</span>
+                                        <i class="fa fa-fw fa-exclamation-circle"></i> Estado
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">{{detalles.ubicacion}}</span>
+                                        <i class="fa fa-fw fa-map-marker"></i> Ubicación
+                                    </a>
+                                    
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">{% if detalles.insumos == 0 %}Sin agregar {% else %}$ {{detalles.insumos}}{% endif %}</span>
+                                        <i class="fa fa-fw fa-money"></i> Insumos
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">{% if detalles.manoDeObra == 0 %}Sin agregar {% else %}$ {{detalles.manoDeObra}}{% endif %}</span>
+                                        <i class="fa fa-fw fa-money"></i> Mano de obra
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">{% if detalles.senia == 0 %}Sin Señar {% else %}$ {{detalles.senia}}{% endif %}</span>
+                                        <i class="fa fa-fw fa-money"></i> Seña
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">{% if detalles.precio == 0 %}Sin Presupuestar {% elseif detalles.senia == 0 %}$ {{detalles.precio}}
+                                        {% else %} 
+                                            $ {{detalles.precio - detalles.senia}}
+                                        {% endif %}</span>
+                                        <i class="fa fa-fw fa-money"></i> A pagar 
+                                    </a>
+                                     
+                                   
+                                </div>
+                                <div class="list-group col-lg-12">
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge">{{detalles.nota}}</span>
+                                        <i class="fa fa-fw fa-comments"></i> Notas
+                                    </a>
+                                </div>
+                </div>
+        </div>
+        
+        <div class="modal fade" id="confirm-pagar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+                  <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-exclamation-triangle fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                  
+                                        <h2><div>
+                                              
+                                            Debe pagar a {{detalles.nombreLuthier}}  ${{precioPagar}}
+
+                                           
+                                         </div></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                              <form method="post" action="../controller/pagarReparacion.php" >
+                          
+                                   
+                                    <input id="manoDeObra" name="manoDeObra" type="hidden" value="{{detalles.manoDeObra}}"/>
+                                    <input id="id" name="id" type="hidden" value="{{detalles.idReparacion}}"/>
+                                    <input id="luthier" name="luthier" type="hidden" value="{{detalles.nombreLuthier}}"/>
+                                    <div class="col-md-6">
+                                      
+                                         <div class="form-group">
+                                  
+                                            <select class="form-control" id="tipoSalida" name="tipoSalida">
+                                                <option value="saleCaja">Sale de caja</option>
+                                                <option value="saleMes">Sale del mes</option>
+
+                                            </select>
+                                        </div>
+          
+                                        
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="col-md-12 ">
+                                          <button type="submit" class="btn btn-warning"> Pagar </button>
+                                          <a data-dismiss="modal">
+                                           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button></a>
+                                          </div>
+                                    </div>
+                       </form>
+                              
+                             
+                            
+                          </div>
+                   </div>
+                  
+              </div>
+        </div>
+        <div class="modal fade" id="confirm-retirar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+                  <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-thumbs-o-up fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                      {% if detalles.senia == 0 %}
+                                        <h2><div>Total a pagar : ${{detalles.precio}}<br> ¿Desea continuar?</div></h2>
+                                      {% else %}
+                                        <h2><div>Total a pagar : ${{detalles.precio - detalles.senia}}<br> ¿Desea continuar?</div></h2>
+                                      {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                              <a data-dismiss="modal">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button></a>
+                              <a href="../controller/retirarReparacion.php?idReparacion={{detalles.idReparacion}}&totalAPagar={{detalles.precio}}"><button type="button" class="btn btn-warning">Continuar</button></a>
+                            
+                          </div>
+                   </div>
+                  
+              </div>
+        </div>
+
+       
+        
+{% endblock%}

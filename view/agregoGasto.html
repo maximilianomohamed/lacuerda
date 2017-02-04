@@ -1,0 +1,50 @@
+{% extends direccion %}
+ {% block titulo %}
+        Agregar Gasto
+ {% endblock %}
+{% block cabecera %}
+  
+{% endblock %}
+{% block contenido %}
+	<form method="post" action="../controller/agregoGasto.php" >
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input id="descripcion" name="descripcion" class="form-control" placeholder="Descripción*" type="text" maxlength="40" required="required"/> 
+                </div>
+                 <div class="form-group">
+                    <select class="form-control" id="tipo" name="tipo">
+                        <option value='Insumos'>Insumos</option>
+                        <option value='Proveedor'>Proveedor</option>
+                        <option value='Impuesto'>Impuesto</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" id="tipoGasto" name="tipoGasto">
+                        <option value='saleCaja'>Sale de la caja</option>
+                        <option value='saleMes'>Sale del mes</option>
+                  
+                    </select>
+                </div>
+                
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                   
+                </div>
+
+               <div class="form-group">
+                    <input id="monto" name="monto" class="form-control" placeholder="Monto*" type="number" maxlength="40" required="required"/> 
+                    <input id="mes" name="mes" type="hidden" value="{{mes}}"/>
+                    <input id="anio" name="anio" type="hidden" value="{{anio}}"/>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Agregar Gasto</button>
+                </div>
+                
+            </div>
+            
+        </div>
+    </form>
+
+{% endblock %}

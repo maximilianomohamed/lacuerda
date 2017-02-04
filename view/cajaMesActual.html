@@ -1,0 +1,124 @@
+{% extends direccion %}
+ {% block titulo %}
+   	   Caja de {{mes}}
+ {% endblock %}
+{% block cabecera %}
+	 <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Movimientos de caja del mes </h3>
+{% endblock %}
+{% block contenido %}
+	{% if correctamente %}
+        <div class='alert alert-success'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Bien!!</strong> La acción se realizó con exito.
+        </div>
+    {% endif %}
+     {% if noGastos %}
+	        <div class='alert alert-warning'>
+	              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+	              <strong>Cuidado!!</strong> Aún no hay gastos cargados.
+	        </div>
+	{% endif %}
+	<div class="now">
+		
+			<div class="col-xs-9">
+				<div class="panel panel-default">
+	                <div class="panel-heading">
+	                    
+	                </div>
+	                <div class="panel-body">
+	                    <div class="table-responsive">
+        					<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+	                            <thead>
+	                                <tr>
+	                                    <th>Fecha</th>
+	                    				<th>Ingreso</th>
+	                    				<th>Egreso</th>
+	                    				<th>En Caja</th>
+	                    				<th>Administrador</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                    {% for caja in cajas %}
+					                            <tr>
+					                                  <td class="gradeA">{{caja.fecha|date("d/m/Y")}}</td>
+					                                   <td class="gradeA">{{caja.ingreso}}</td>
+					                                   <td class="gradeA">{{caja.egreso}}</td>
+					                                   <td class="gradeA">{{caja.ganancia}}</td>
+					                                    <td>
+					                                      <a href="../controller/verGastos.php?mes={{caja.mes}}&anio={{caja.anio}}&tipo=saleCaja"<button class="btn btn-success btn-xs"><i class="fa fa-pencil">  </i>  Ver Egresos</button></a>
+					                                      {% if caja.estado == "Abierta" %}
+					                             				<a  data-toggle="modal" data-target="#cerrarCaja" href="#"<button class="btn btn-danger btn-xs"><i class="fa fa-dot-circle-o">  </i>  Cerrar Caja</button></a>
+				                                     	  {% endif %}
+					                                      
+					                                   </td>
+					                            </tr>
+					          
+					                    {% endfor %}
+	                            </tbody>
+	                        </table>
+	                    </div>
+	                    
+	                </div>
+	            </div>
+			    
+			</div>
+			<div class="col-xs-3">
+				<div class="panel panel-green">
+				    <div class="panel-heading">
+						<div class="huge">$ {{total}}</div>
+						<div><h4>Total de ingreso del mes </h4></div>
+					</div>
+	   			</div>
+	   			 <a href="../controller/agregarGasto.php" ><button type="button" class="btn btn-success">Agregar Gastos</button></a> 
+
+	  
+			</div>
+	</div>
+	
+</div>
+
+ <div class="modal fade" id="cerrarCaja" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+                  <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-exclamation-triangle fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                  
+                                        <h2><div>Está finalizando la caja, ingrese el monto total que quedará en la caja</div></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                              <form method="post" action="../controller/cerrarCaja?id={{caja.idCaja}}" >
+                                <div class="row">
+                                   
+                              
+                                    <div class="col-md-6">
+                                      
+                                         <div class="form-group">
+                                  
+                                            <input id="saldoCaja" name="saldoCaja" class="form-control" placeholder="Saldo en caja*" type="number"  required="required"/>
+                                        </div>
+          
+                                        
+                                    </div>
+                                    <div class="col-md-6 ">
+                                        <div class="col-md-12 ">
+                                          <button type="submit" class="btn btn-warning"> Cerrar caja</button>
+                                          <a data-dismiss="modal">
+                                           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button></a>
+                                          </div>
+                                    </div>
+                       </form>
+                              
+                             
+                            
+                          </div>
+                   </div>
+                  
+              </div>
+        </div>
+{% endblock%}

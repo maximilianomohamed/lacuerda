@@ -1,0 +1,36 @@
+{% extends direccion %}
+ {% block titulo %}
+      Editar coeficiente 
+ {% endblock %}
+{% block cabecera %}
+     {% if yaExiste %}
+        <div class='alert alert-warning alert-dismissable'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Cuidado!!</strong> El coeficiente que quiere ingresar ya existe.
+        </div>
+    {% endif %}
+{% endblock %}
+{% block contenido %}
+	    <form method="post" action="../controller/editoCoeficiente.php" >
+                  <div class="row">
+                      <div class="col-md-12">
+                   
+                          <div class="form-group">
+                              <label>Cantidad de Cuotas:</label>
+                              <input id="cantCuotas" name="cantCuotas" class="form-control" value="{{detalle.cantCuotas}}"  type="number" required="required"/>
+                          </div>
+                           <div class="form-group">
+                              <label>Coeficiente:</label>
+                              <input id="porcentaje" name="porcentaje" class="form-control" value="{{detalle.porcentaje}}"  type="number" required="required"/>
+                              <input id="id" name="id" type="hidden" value="{{detalle.idCoheficiente}}"/>
+                          </div>
+                         
+                      <div class="col-md-12 ">
+                          <div class="form-group">
+                                  <button type="submit" class="btn btn-success">Editar Coeficiente</button>
+                           </div>
+                      </div>
+                  </div>
+      </form>
+
+{% endblock %}

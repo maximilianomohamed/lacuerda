@@ -1,0 +1,67 @@
+{% extends "./menuFron.html" %}
+
+{% block contenido %} 
+
+    <section id="contact-info">
+        <div class="center">                
+            <h2>Ingresar</h2>
+            <p class="lead">Sección solo para usuarios registrados</p>
+        </div>
+        
+        <div class="gmap-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 text-center">
+                       
+                            <img src="../images/slider/img1.png" class="img-responsive">
+                             
+                    </div>
+                    <div class="col-sm-4 text-center">
+                        {% if error %}
+                            <div class='alert alert-warning alert-dismissable'>
+                                  <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                                  <strong>Cuidado!!</strong> El usuario o la contraseña son incorrectas.
+                            </div>
+                        {% elseif correcto %}
+                            <div class='alert alert-success alert-dismissable'>
+                                  <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                                  <strong>Bien!!</strong> Los cambios se realizaron correctamente ahora logueate nuevamente.
+                            </div>
+                        {% endif %}
+                        <form class="contact-form" method="post" action="../controller/login.php">
+                            <div >
+                                                <div class="form-group">
+                                                   
+                                                    <input type="text" name="usuario" class="form-control" required="required" title="Debes ingresar tu usuario"  placeholder= "Tu Usuario*">
+                                                </div>
+                                            
+                                                <div class="form-group">
+                                                   
+                                                    <input type="password" name="contraseña" class="form-control" placeholder= "Tu Contraseña*" title="Debes ingresar tu contraseña" required="required">
+                                                </div>
+                                                
+                                               
+                                                                  
+                                   
+                                                <div class="form-group">
+                                                    <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Ingresar</button>
+                                                </div>
+                                                                     
+                            </div>
+                            
+                        </form> 
+                    </div>
+                  
+
+
+                
+                </div>
+            </div>
+        </div>
+    </section>  <!--/gmap_area -->
+    
+    
+    
+  
+      
+{% endblock%}

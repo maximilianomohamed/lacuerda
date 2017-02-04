@@ -1,0 +1,174 @@
+{% extends direccion %}
+ {% block titulo %}
+      Agregar artículo
+ {% endblock %}
+{% block cabecera %}
+    {% if yaExiste %}
+        <div class='alert alert-warning alert-dismissable'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Cuidado!!</strong> El artículo que quiere ingresar ya existe.
+        </div>
+    {% endif %}
+{% endblock %}
+{% block contenido %}
+        
+
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#usados" aria-controls="usados" role="tab" data-toggle="tab">Usados</a></li>
+            <li role="presentation"><a href="#productos" aria-controls="productos" role="tab" data-toggle="tab">Productos</a></li>
+
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="usados">
+                <div class="panel-body">
+                    <form id="formulario" method="post" action="../controller/agregoUsado.php" >
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input id="descripcion" name="descripcion" class="form-control" placeholder="Descripcion del artículo*" type="text" maxlength="80" required="required"/> 
+                                                            </div>
+                                                            <div class="form-group">
+                                                                
+                                                                <select class="form-control" id="marca" name="marca">
+                                                                        <option value='otros'>OTROS</option>
+                                                                    {% for marca in marcas %}
+                                                                   
+                                                                       <option value='{{marca.idMarca}}'>{{marca.nombreMarca}}</option>
+                                                                                   
+                                                                    {% endfor %}
+                                                                    
+                                                                </select>
+                                                            </div>   
+                                                            <div class="form-group">
+                                                                
+                                                                  <div class="btn">
+                                                                    <input type="file" multiple name="file[]" multiple id="file">
+                                                                  </div>   
+                                                                  <p class="red-text">Solo se permiten archivos JPG y JPEG menores a 1Mb</p>
+                                                                
+                                                            </div>  
+
+                                                        </div>
+                                                  
+                                                        <div class="col-md-6">
+                                                             
+                                                     
+                                                            <div class="form-group input-group">
+                                                                <span class="input-group-addon">$</span>
+                                                                <input  id="precio" name="precio" class="form-control" placeholder="Precio*"  type="number" step="any" min="1" required="required">
+                                        
+                                                            </div>
+                                                            <div class="form-group input-group">
+                                                                <span class="input-group-addon">%</span>
+                                                                <input  id="ganancia" name="ganancia" class="form-control" placeholder="Ganancia*"  type="number" step="any" min="1" required="required">
+                                        
+                                                            </div>
+                                                     
+                                                             <div class="form-group input-group">
+                                                                <span class="input-group-addon">$</span>
+                        
+                                                                <input  id="precioVenta" name="precioVenta" class="form-control" placeholder="Precio de Venta*"    disabled>
+                                                             </div>
+                   
+                                                        </div>
+                                                        <div class="col-md-12 ">
+                                                            <div class="col-md-6 ">
+                                                              <button type="submit" class="btn btn-success">Agregar Usado</button>
+                                                             
+                                                            </div>
+                                </form id="formulario">
+                                                          
+                                                            <div class="col-md-6 ">
+                                                                <form id="elformu" method="post"  onsubmit="return false;" >        
+                                                                   <button type="submit" onclick = " return actualizarPrecioVenta()" class="btn btn-success">Calcular Ganancia</button>
+                                                                                       
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                </div>
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="productos">
+                <div class="panel-body">
+                    <form id="formulario" method="post" action="../controller/agregoAccesorio.php" >
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <input id="descripcion" name="descripcion" class="form-control" placeholder="Descripcion del producto*" type="text" maxlength="80" required="required"/> 
+                                                            </div>
+                                                            <div class="form-group">
+                                                                
+                                                                <select class="form-control" id="tipo" name="tipo">
+
+                                                                    <option value='accesorio'>Accesorio</option>
+                                                                    <option value='amplicador'>Amplicador</option>
+                                                                    <option value='dicos'>Dicos</option>
+                                                                    <option value='instrumento'>Instrumento</option>
+                                                                    <option value='libro'>Libro</option>
+                                                                    <option value='madera'>Madera</option>
+                                                                    <option value='herramienta'>Herramienta</option>
+                                                                    <option value='accesorio_lutheria'>Accesorio luthería</option>
+
+                                                                    </select>
+                                                                </div>   
+                                                            <div class="form-group">
+                                                                
+                                                                  <div class="btn">
+                                                                    <input type="file" multiple name="file[]" multiple id="file">
+                                                                  </div>   
+                                                                  <p class="red-text">Solo se permiten archivos JPG y JPEG menores a 1Mb</p>
+                                                                
+                                                            </div>  
+
+                                                        </div>
+                                                  
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                
+                                                                <select class="form-control" id="categoria" name="categoria">
+                                                                    <option value='otros'>Otros</option>
+                                                                    <option value='paraGuitarras'>Para guitarras</option>
+                                                                    <option value='paraBajos'>Para bajos</option>
+                                                                    <option value='paraVientos'>Para vientos</option>
+                                                                    <option value='paraPercusion'>Para percusión</option>
+                                                                    <option value='pedales'>Pedales</option>
+                                                                    
+
+                                                                    </select>
+                                                                </div>  
+                                                     
+                                                                
+                                                            <div class="form-group input-group">
+                                                                <span class="input-group-addon">%</span>
+                                                                <input  id="ganancia" name="ganancia" class="form-control" placeholder="Ganancia*"  type="number" step="any" min="1" required="required">
+                                        
+                                                            </div>
+                                                     
+                                                             <div class="form-group input-group">
+                                                                <span class="input-group-addon">$</span>
+                        
+                                                                <input  id="precioVenta" name="precioVenta" class="form-control" placeholder="Precio de Venta*"    disabled>
+                                                             </div>
+                   
+                                                        </div>
+                                                        <div class="col-md-12 ">
+                                                            <div class="col-md-6 ">
+                                                              <button type="submit" class="btn btn-success">Agregar Producto</button>
+                                                             
+                                                            </div>    
+                                                         </div>
+                        </form id="formulario">
+                    </div>
+                </div>
+
+            </div>
+            </div>
+          </div>
+
+
+
+{% endblock %}

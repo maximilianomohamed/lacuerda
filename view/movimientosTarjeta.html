@@ -1,0 +1,94 @@
+{% extends direccion %}
+ {% block titulo %}
+      Ventas con tarjeta
+ {% endblock %}
+{% block cabecera %}
+ <a href="../controller/realizarVenta.php"><button type="submit" class="btn btn-primary"><i class="fa fa-reply-all"></i> Volver </button></a>
+{% endblock %}
+{% block contenido %}
+{% if correctamente %}
+        <div class='alert alert-success'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Bien!!</strong> La acción se realizó con exito.
+        </div>
+    {% endif %}
+     {% if noGastos %}
+        <div class='alert alert-warning'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Cuidado!!</strong> Aún no hay gastos cargados.
+        </div>
+    {% endif %}
+	<div class="table-responsive">
+        
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Mes</th>
+                        <th>Monto</th>
+                        <th>Cantidad de Cuotas</th>
+                        <th>Administrador</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     {% for movimiento in movimientos %}
+                            <tr>
+                                   <td>{{movimiento.fecha|date("d/m/Y")}}</td>
+                                  {% if (movimiento.mes == 1) %}
+                                    <td class="gradeA">Enero</td>
+                                  {% elseif movimiento.mes == 2 %}
+                                    <td class="gradeA">Febrero</td>
+                                  {% elseif movimiento.mes == 3 %}
+                                    <td class="gradeA">Marzo</td>
+                                  {% elseif movimiento.mes == 4 %}
+                                    <td class="gradeA">Abril</td>
+                                  {% elseif movimiento.mes == 5 %}
+                                    <td class="gradeA">Mayo</td>
+                                  {% elseif movimiento.mes == 6 %}
+                                    <td class="gradeA">Junio</td>
+                                  {% elseif movimiento.mes == 7 %}
+                                    <td class="gradeA">Julio</td>
+                                  {% elseif movimiento.mes == 8 %}
+                                    <td class="gradeA">Agosto</td>
+                                  {% elseif movimiento.mes == 9 %}
+                                    <td class="gradeA">Septiembre</td>
+                                  {% elseif movimiento.mes == 10 %}
+                                    <td class="gradeA">Octubre</td>
+                                  {% elseif movimiento.mes == 11 %}
+                                    <td class="gradeA">Noviembre</td>
+                                  {% elseif movimiento.mes == 12 %}
+                                    <td class="gradeA">Diciembre</td>
+                                  {% endif %}
+                                 
+                                  <td>${{movimiento.monto|round(0,"ceil")}}</td>
+                                  <td>{{movimiento.cantCuotas}}</td>
+                                  <td>
+                                      
+                                      <a data-href="../controller/eliminarTarjeta.php?id={{movimiento.idMovTarj}}"  data-toggle="modal" data-target="#confirm-delete" href="#"> <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o ">  </i> Eliminar</button></a>   
+                                   </td>
+                             </tr>
+
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+         
+        </div>
+         <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          
+                      </div>
+                      <div class="modal-body">
+                          ¿Está seguro de que desea eliminar la venta seleccionada?
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                          <a href="#" class="btn btn-danger danger">Eliminar</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+{% endblock%}

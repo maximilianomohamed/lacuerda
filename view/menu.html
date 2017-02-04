@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link rel="icon" href="../images/favicon.gif">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+     
+    <title>La Cuerda</title>
+    <link rel="shortcut icon" href="../images/ico/favi.gif">
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../css/plugins/morris.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="../css/plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../index.php">La Cuerda - Control interno</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-right top-nav">
+                  
+                <!-- /.dropdown -->
+                <li class="dropdown">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{user}} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      
+                        <li>
+                            <a href="../controller/config.php"><i class="fa fa-fw fa-gear"></i> Configuración</a>
+                        </li>
+                        <li>
+                            <a href="../controller/usuarios.php"><i class="fa fa-fw fa fa-users"></i> Usuarios</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="../controller/logout.php"><i class="fa fa-fw fa-power-off"></i> Salir </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+               
+                    <ul class="nav navbar-nav side-nav">
+               
+                        <li >
+                            <a href="../controller/listarProductos.php"><i class="fa fa-fw fa-tasks"></i> Lista de Productos</a>
+                        </li>
+                        
+                        <li>
+                            <a href="../controller/listarMarcas.php"><i class="fa fa-fw fa-tasks"></i> Lista de Marcas</a>
+                        </li>
+                          <li >
+                            <a href="../controller/coeficientes.php"><i class="fa fa-fw fa-tasks"></i> Coeficientes</a>
+                        </li>
+                        <li >
+                            <a href="../controller/articulos.php"><i class="fa fa-fw fa-tasks"></i> Artículos</a>
+                        </li>
+                         <li>
+                            <a href="../controller/luthiers.php"><i class="fa fa-fw fa-music"></i> Luthiers</a>
+                        </li>
+                        
+                        <li >
+                            <a href="../controller/movimientosMensuales.php"><i class="fa fa-bar-chart-o fa-fw"></i> Movimientos mensuales</a>
+                        </li>
+                        <li >
+                            <a href="../controller/ventasTarjetas.php"><i class="fa fa-fw fa-bar-chart-o"></i> Ventas con Tarjeta</a>
+                        </li>
+                        <li >
+                            <a href="../controller/cajasDelMes.php"><i class="fa fa-fw fa-bar-chart-o"></i> Caja</a>
+                        </li>
+                          <li>
+                            <a href="../controller/reparaciones.php"><i class="fa fa-fw fa-reply-all"></i> Ordenes de trabajo</a>
+                        </li>
+                       
+                        <li>
+                            <a href="../controller/pedidos.php"><i class="fa fa-fw fa-folder-open"></i> Pedidos</a>
+                        </li>
+        
+                        <li>
+                            <a href="../controller/realizarVenta.php"><i class="fa fa-fw fa-plus-square"></i> Nueva Venta</a>
+                        </li>
+                        
+                    </ul>
+            
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+             <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">{% block titulo%}{% endblock %}</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            {% block cabecera%}{% endblock %}
+
+                        </div>
+
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            {% block contenido %}{% endblock %}
+                        
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                  
+                </div>
+              
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+   
+   <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap-confirmation.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="../js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="../js/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../js/sb-admin-2.js"></script>
+
+     {% block scripts %}{% endblock %}
+
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').dataTable();
+    });
+    </script>
+      <script src="../js/scripts.js"></script>
+</body>
+
+</html>

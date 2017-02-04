@@ -1,0 +1,172 @@
+{% extends direccion %}
+ {% block titulo %}
+      Editar Orden de Trabajo
+ {% endblock %}
+{% block cabecera %}
+   
+{% endblock %}
+{% block contenido %}
+	    <form method="post" action="../controller/editoReparacion.php" >
+                  <div class="row">
+                   
+                      <div class="col-md-6">
+                         
+                          <div class="form-group">
+                              <label>Nombre del cliente:</label>
+                              <input id="nombre" name="nombre" class="form-control" value="{{detalle.nombreCliente}}"  type="text" maxlength="30" required="required"/>
+                               <input id="id" name="id" type="hidden" value="{{detalle.idReparacion}}"/>
+                          </div>
+                          <div class="form-group">
+                              <label>Telefono del cliente:</label>
+                              <input id="telefono" name="telefono" class="form-control" value="{{detalle.telefonoCliente}}"  type="number" maxlength="30" required="required"/>
+                           
+                          </div>
+                          
+                            <div class="form-group">
+                                <label>Email del cliente:</label>
+                                <input id="email" name="email" class="form-control" value="{{detalle.emailCliente}}"  type="email" maxlength="40" />
+                             
+                            </div>
+                       
+                          <div class="form-group">
+                              <label>Instrumento:</label>
+                              <input id="instrumento" name="instrumento" class="form-control" value="{{detalle.instrumento}}"  type="text" maxlength="40" required="required"/>
+                              
+                          </div>
+                          <div class="form-group">
+                              <label>Marca/Modelo:</label>
+                              <input id="marcaModelo" name="marcaModelo" class="form-control" value="{{detalle.marcaModelo}}"  type="text" maxlength="40" required="required"/>
+                       
+                          </div>
+                     
+                         
+                          <div class="form-group">
+                              <label>Nro de Serie:</label>
+                              <input id="nroSerie" name="nroSerie" class="form-control" value="{% if detalle.nroSerie != 0 %}{{detalle.nroSerie}}{% endif %}"  type="text" maxlength="40" />
+                              
+                          </div>
+                       <div class="form-group">
+                              <label>Nota:</label>
+                              
+                              <textarea id="notas" name="notas" class="form-control" type="text" rows="2" maxlength="250" required="required" >{{detalle.nota}}</textarea>
+                       
+                          </div>
+                      
+                       </div>   
+                      <div class="col-md-6 ">
+                         
+                          <div class="form-group">
+                            {% if detalle.pagoLuthier == "Pagado" %}
+                                <fieldset disabled>
+                                   <label for="disabledSelect">Luthier:</label>
+                                    <input id="disabledInput" name="luthier" class="form-control"
+                                        value="{{detalle.nombreLuthier}}"/>
+                                    </select>
+                               </fieldset>
+                             {% else %}
+                                <label>Luthier:</label>
+                                 <select id="luthier" name="luthier" class="form-control" >
+                                  <option value="{{detalle.idLuthier}}" selected="selected">{{detalle.nombreLuthier}}</option>
+                                    {% for luthier in luthiers %}
+
+                                      <option value='{{luthier.idLuthier}}'>{{luthier.nombreLuthier}}</option>
+                                    {% endfor %}
+                                </select>
+                             {% endif %}
+
+    
+                          </div>
+                         
+                          <div class="form-group">
+                             
+                              {% if detalle.estado != "Entregado" %}
+                               <label>Estado:</label>
+                               <select id="estado" name="estado" class="form-control" >
+                                  <option value="{{detalle.estado}}" selected="selected">{{detalle.estado}}</option>
+                                      <option value='Ingresado'>Ingresado</option>
+                                      <option value='Presupuestado'>Presupuestado</option>
+                                      
+                                      {% if detalle.precio != 0 %}
+                                        <option value='En Reparacion'>En Reparacion</option>
+                                        <option value='Cancelado'>Cancelado</option>
+                                        <option value='Para Retirar'>Para Retirar</option>
+                                      {% endif %}
+                                 
+                                </select>
+                              {% else %}
+                                   <fieldset disabled>
+                                       <label for="disabledSelect">Estado:</label>
+                                        <input id="disabledInput" name="estado" class="form-control"
+                                            value="{{detalle.estado}}"/>
+                                        </select>
+                                   </fieldset>
+                              {% endif %}
+                          </div>
+                          <div class="form-group">
+                             {% if detalle.pagoLuthier == "Pagado" %}
+                                <fieldset disabled>
+                                   <label for="disabledSelect">Insumos:</label>
+                                    <input id="disabledInput" name="insumos" class="form-control"
+                                        value="{{detalle.insumos}}"/>
+                                    </select>
+                               </fieldset>
+                             {% else %}
+                                <label>Insumos:</label>
+                                <input id="insumos" name="insumos" class="form-control" value="{% if detalle.insumos != 0 %}{{detalle.insumos}}{% endif %}"  type="number" maxlength="40" />
+                             {% endif %}
+                              
+                              
+                          </div>
+                          <div class="form-group">
+                             {% if detalle.pagoLuthier == "Pagado" %}
+                                <fieldset disabled>
+                                   <label for="disabledSelect">Mano de Obra:</label>
+                                    <input id="disabledInput" name="manoDeObra" class="form-control"
+                                        value="{{detalle.manoDeObra}}"/>
+                                    </select>
+                               </fieldset>
+                             {% else %}
+                                <label>Mano de Obra:</label>
+                                <input id="manoDeObra" name="manoDeObra" class="form-control" value="{% if detalle.manoDeObra != 0 %}{{detalle.manoDeObra}}{% endif %}"  type="number" maxlength="40" />
+                             {% endif %}
+                              
+                              
+                          </div>
+                          <div class="form-group">
+                           
+                                <fieldset disabled>
+                                   <label for="disabledSelect">Precio Final:</label>
+                                    <input id="disabledInput" name="precio" class="form-control"
+                                        value="{{detalle.precio}}"/>
+                                    </select>
+                               </fieldset>
+                            
+                              
+                              
+                          </div>
+                          
+                          <div class="form-group">
+                              <label>Ubicación:</label>
+                              <select id="ubicacion" name="ubicacion" class="form-control" >
+                                  <option value="{{detalle.ubicacion}}" selected="selected">{{detalle.ubicacion}}</option>
+                                      <option value='Local'>Local</option>
+                                      <option value='Luthier'>Luthier</option>
+                                      <option value='Cliente'>Cliente</option>
+                                      
+                                 
+                                </select>
+                             
+                          </div>
+                          
+                         
+                          
+                          
+                          <div class="form-group">
+                                  <button type="submit" class="btn btn-success">Editar Orden</button>
+                           </div>
+                      </div>
+                     
+                  </div>
+      </form>
+
+{% endblock %}

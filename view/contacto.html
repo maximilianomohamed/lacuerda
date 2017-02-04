@@ -1,0 +1,60 @@
+{% extends "./menuFron.html" %}
+
+{% block contenido %} 
+    
+
+    <section id="contact-info">
+        <div class="center">                
+            <h2>¿Donde estamos?</h2>
+            <p class="lead">Nos encontramos en La Plata, Buenos Aires, calle 68 entre 3 y 4 n°419. Teléfono:(0221) 458-3573. Email: <a href="mailto:lacuerda.lp@hotmail.com">lacuerda.lp@hotmail.com</a> Dejanos todas tus dudas y a la brevedad nos contactaremos con vos!</p>
+        </div>
+        <div class="gmap-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                       
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4626.270669995282!2d-57.931168141430575!3d-34.92483105821334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e8a7c14b68e5%3A0xaab1269551f6b74a!2sLa+Cuerda!5e0!3m2!1ses-419!2sar!4v1455381247175" width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="controller/sendemail.php">
+                            <div >
+                                                <div class="form-group">
+                                                   
+                                                    <input type="text" name="name" class="form-control" required="required" placeholder= "Tu nombre*">
+                                                </div>
+                                                <div class="form-group">
+                                                    
+                                                    <input type="email" name="email" class="form-control" required="required" placeholder= "Tu correo*">
+                                                </div>
+                                                <div class="form-group">
+                                                   
+                                                    <input type="number" class="form-control" placeholder= "Tu teléfono*">
+                                                </div>
+                                                
+                                               
+                                                <div class="form-group">
+                                                   
+                                                    <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder= "Tu mensaje*"></textarea>
+                                                </div>                        
+                                   
+                                                <div class="form-group">
+                                                    <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Enviar Mensaje</button>
+                                                </div>
+                                                                     
+                            </div>
+                            
+                        </form> 
+                    </div>
+                  
+
+
+                
+                </div>
+            </div>
+        </div>
+   </section>
+    
+  
+      
+{% endblock%}

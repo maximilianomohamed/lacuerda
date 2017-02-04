@@ -1,0 +1,82 @@
+{% extends direccion %}
+ {% block titulo %}
+      Movimientos Mensuales
+ {% endblock %}
+{% block cabecera %}
+	 <a href="../controller/agregarGasto.php" ><button type="button" class="btn btn-success">Agregar Gastos</button></a> 
+{% endblock %}
+{% block contenido %}
+{% if correctamente %}
+        <div class='alert alert-success'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Bien!!</strong> La acción se realizó con exito.
+        </div>
+    {% endif %}
+     {% if noGastos %}
+        <div class='alert alert-warning'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Cuidado!!</strong> Aún no hay gastos cargados.
+        </div>
+{% endif %}
+	<div class="table-responsive">
+        
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Mes</th>
+                        <th>Ingresos</th>
+                        <th>Egresos</th>
+                        <th>Ganancia</th>
+                        <th>Administrador</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     {% for movimiento in movimientos %}
+                            <tr>
+                                  
+                                  {% if (movimiento.mes == 1) %}
+                                    <td class="gradeA">Enero</td>
+                                  {% elseif movimiento.mes == 2 %}
+                                    <td class="gradeA">Febrero</td>
+                                  {% elseif movimiento.mes == 3 %}
+                                    <td class="gradeA">Marzo</td>
+                                  {% elseif movimiento.mes == 4 %}
+                                    <td class="gradeA">Abril</td>
+                                  {% elseif movimiento.mes == 5 %}
+                                    <td class="gradeA">Mayo</td>
+                                  {% elseif movimiento.mes == 6 %}
+                                    <td class="gradeA">Junio</td>
+                                  {% elseif movimiento.mes == 7 %}
+                                    <td class="gradeA">Julio</td>
+                                  {% elseif movimiento.mes == 8 %}
+                                    <td class="gradeA">Agosto</td>
+                                  {% elseif movimiento.mes == 9 %}
+                                    <td class="gradeA">Septiembre</td>
+                                  {% elseif movimiento.mes == 10 %}
+                                    <td class="gradeA">Octubre</td>
+                                  {% elseif movimiento.mes == 11 %}
+                                    <td class="gradeA">Noviembre</td>
+                                  {% elseif movimiento.mes == 12 %}
+                                    <td class="gradeA">Diciembre</td>
+                                  {% endif %}
+                                  <td>{{movimiento.ingreso}}</td>
+                                  <td>{{movimiento.egreso}}</td>
+                                  <td class="center">{{movimiento.ganancia}}</td>
+                                  <td>
+                                      <a href="../controller/verGastos.php?mes={{movimiento.mes}}&anio={{movimiento.anio}}&tipo=saleMes"<button class="btn btn-success btn-xs"><i class="fa fa-pencil">  </i> Ver Egresos</button></a>
+                                      {% if movimiento.estado == "Abierto" %}
+                                                   <a href="../controller/cerrarMes?id={{movimiento.idMovimiento}}"<button class="btn btn-danger btn-xs"><i class="fa fa-dot-circle-o">  </i>  Cerrar Mes</button></a>
+                                      {% endif %}
+                                      
+                                   </td>
+                             </tr>
+
+                                
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+         
+        </div>
+
+{% endblock%}

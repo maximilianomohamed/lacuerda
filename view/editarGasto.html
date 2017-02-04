@@ -1,0 +1,57 @@
+{% extends direccion %}
+ {% block titulo %}
+      Editar gasto 
+ {% endblock %}
+{% block cabecera %}
+   
+{% endblock %}
+{% block contenido %}
+	    <form method="post" action="../controller/editoGasto.php" >
+                <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label>Detalle del Gasto:</label>
+                              <input id="descripcion" name="descripcion" class="form-control" value="{{detalle.descripcion}}" type="text" maxlength="40" required="required"/> 
+                          </div>
+                           <div class="form-group">
+                              <select class="form-control" id="tipo" name="tipo">
+                                  <option value='{{detalle.tipo}}'>{{detalle.tipo}}</option>
+                                  <option value='Insumos'>Insumos</option>
+                                  <option value='Proveedor'>Proveedor</option>
+                                  <option value='Impuesto'>Impuesto</option>
+                              </select>
+                          </div>
+                          <div class="form-group">
+                             {% if detalle.tipoSalida == "saleCaja" %}
+                                    <input class="form-control" id="disabledInput" type="text" placeholder="Sale de caja" disabled>
+                              {% else %} 
+                                    <input class="form-control" id="disabledInput" type="text" placeholder="Sale del mes" disabled>
+                              {% endif %}    
+                              <input id="tipoGasto" name="tipoGasto" type="hidden" value="{{detalle.tipoSalida}}"/>                         
+                          </div>
+                          
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                             
+                          </div>
+
+                         <div class="form-group">
+                              <label>Monto:</label>
+                              <input id="monto" name="monto" class="form-control" value="{{detalle.monto}}"  type="number" maxlength="40" required="required"/> 
+                              <input id="mes" name="mes" type="hidden" value="{{mes}}"/>
+                              <input id="anio" name="anio" type="hidden" value="{{anio}}"/>
+                              <input id="fecha" name="fecha" type="hidden" value="{{detalle.fecha}}"/>
+                              <input id="id" name="id" type="hidden" value="{{detalle.idGasto}}"/>
+                          </div>
+                          <div class="form-group">
+                              <button type="submit" class="btn btn-success">Editar Gasto</button>
+                          </div>
+                          
+                      </div>
+                      
+                  </div>
+                  
+      </form>
+
+{% endblock %}

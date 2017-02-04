@@ -1,0 +1,102 @@
+{% extends "./menuImpresiones.html" %}
+
+{% block contenido %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel">
+                               
+                                <div class="panel-body">
+                                    
+                                    <div class="col-lg-12 ">
+                                        <div class="col-lg-6 text-lefth">
+                                        <div class="slider-img">
+                                            <img src="../images/factura/stockCritico.jpg" >
+                                        </div>
+                                        </div>
+                                          <div class="col-lg-6 text-right">
+                                        
+                                                Fecha: {{fecha}}
+                                             </div> 
+                                        
+                                        
+                                    </div>
+                                    
+                                      
+                                
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+        	    
+                       <div class="col-sm-12">
+                            
+                            
+                        </div>
+
+     
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                               
+                                <div class="panel-body">
+                                    <table class="table">
+                                     
+                                        <tr>
+                                            <th></th>
+                                            <th>
+                                                Código
+                                            </th>
+                                            <th>
+                                                Descripción
+                                            </th>
+                                            <th>
+                                                Marca
+                                            </th>
+                                            <th>
+                                                Stock
+                                            </th>
+                                        </tr>
+                                   
+                                    
+                                        
+                                            {% for detalle in detalles %}
+                                            <tr>
+                                                <td>{{detalle.codigoBarras}}</td>
+                                                <td>{{detalle.descripcionProducto}}</td>
+                                                <td>{{detalle.nombreMarca}}</td>
+                                                {% if detalle.stock < 1 %}
+                                                    <td>Sin stock</td>
+                                                {% else %}
+                                                    <td>{{detalle.stock}}</td>
+                                                {% endif %}
+                                             </tr>
+                                            {% endfor %}
+                                       
+                                    
+                                    
+                                </table>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                  
+            </div>
+        </div>
+    </div>
+    
+</div>
+   
+            
+
+
+           
+{% endblock %}

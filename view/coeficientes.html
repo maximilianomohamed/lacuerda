@@ -1,0 +1,77 @@
+{% extends direccion %}
+ {% block titulo %}
+      Listado de Coeficientes
+ {% endblock %}
+{% block cabecera %}
+
+  <a href="../controller/agregarCoeficiente.php" ><button type="button" class="btn btn-success"><i class="fa fa-plus-circle ">  </i> Coeficiente</button></a>                      
+{% endblock %}
+{% block contenido %}
+  {% if correctamente %}
+        <div class='alert alert-success'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Bien!!</strong> La acción se realizó con exito.
+        </div>
+    {% endif %}
+    {% if yaExiste %}
+        <div class='alert alert-success'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Cuidado!!</strong> El coeficiente que tratas de agregar ya existe.
+        </div>
+    {% endif %}
+	<div class="table-responsive">
+        
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Cantidad de Cuotas</th>
+                        <th>Coeficiente</th>
+                        <th>Administrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     {% for coeficiente in coeficientes %}
+                            <tr>
+                                  <td class="gradeA">{{coeficiente.cantCuotas}}</td>
+                                  {% if coeficiente.porcentaje == 0 %}
+                                       <td class="gradeA">SIN INTERÉS</td>
+                                  {% else %}
+                                       <td class="gradeA">% {{coeficiente.porcentaje}}</td>
+                                   {% endif %}
+                                 
+                                  
+                                  <td>
+                                       
+                                      <a href="../controller/editarCoeficiente.php?id={{coeficiente.idCoheficiente}}"<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Editar</button></a>
+                                     
+                                      <a data-href="../controller/eliminarCoeficiente.php?id={{coeficiente.idCoheficiente}}"  data-toggle="modal" data-target="#confirm-delete" href="#"> <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o ">  </i> Eliminar</button></a>
+                                   </td>
+                             </tr>
+
+                                
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+         
+        </div>
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          
+                      </div>
+                      <div class="modal-body">
+                          ¿Está seguro de que desea eliminar el coeficiente seleccionado?
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                          <a href="#" class="btn btn-danger danger">Eliminar</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+                                 
+{% endblock%}

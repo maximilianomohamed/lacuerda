@@ -1,0 +1,35 @@
+{% extends direccion %}
+ {% block titulo %}
+      Agregar coeficiente nuevo
+ {% endblock %}
+{% block cabecera %}
+    {% if yaExiste %}
+        <div class='alert alert-warning alert-dismissable'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Cuidado!!</strong> El coheficiente que quiere ingresar ya existe.
+        </div>
+    {% endif %}
+{% endblock %}
+{% block contenido %}
+	<form method="post" action="../controller/agregoCoeficiente.php" >
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input id="cantCuotas" name="cantCuotas" class="form-control" placeholder="Cantidad de cuotas*" type="number"  required="required"/> 
+                </div>
+                <div class="form-group">
+                  
+                    <input  id="coeficiente" name="coeficiente" class="form-control" placeholder="Precio*"  type="number" step="any" min="1" required="required"> 
+                </div>
+            </div>
+            <div class="col-md-6">
+                  <div class="form-group">
+                        <button type="submit" class="btn btn-success">Agregar Coeficiente</button>
+                 </div>
+                
+            </div>
+            
+        </div>
+    </form>
+
+{% endblock %}

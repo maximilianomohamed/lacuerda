@@ -1,0 +1,32 @@
+{% extends direccion %}
+ {% block titulo %}
+      Agregar Luthier
+ {% endblock %}
+{% block cabecera %}
+    {% if yaExiste %}
+        <div class='alert alert-warning alert-dismissable'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Cuidado!!</strong> El luthier que quiere ingresar ya existe.
+        </div>
+    {% endif %}
+{% endblock %}
+{% block contenido %}
+	<form method="post" action="../controller/agregoLuthier.php" >
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input id="nombre" name="nombre" class="form-control" placeholder="Nombre de luthier*" type="text" maxlength="40" required="required"/> 
+                </div>
+               
+            </div>
+            <div class="col-md-6">
+                  <div class="form-group">
+                        <button type="submit" class="btn btn-success">Agregar luthier</button>
+                 </div>
+                
+            </div>
+            
+        </div>
+    </form>
+
+{% endblock %}
