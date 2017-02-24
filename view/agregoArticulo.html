@@ -24,7 +24,7 @@
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="usados">
                 <div class="panel-body">
-                    <form id="formulario" method="post" action="../controller/agregoUsado.php" >
+                    <form id="formulario" method="post" action="../controller/agregoUsado.php" enctype='multipart/form-data'>
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
@@ -45,7 +45,7 @@
                                                             <div class="form-group">
                                                                 
                                                                   <div class="btn">
-                                                                    <input type="file" multiple name="file[]" multiple id="file">
+                                                                    <input type="file" multiple name="foto">
                                                                   </div>   
                                                                   <p class="red-text">Solo se permiten archivos JPG y JPEG menores a 1Mb</p>
                                                                 
