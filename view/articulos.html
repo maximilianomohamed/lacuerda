@@ -36,30 +36,13 @@
                 </thead>
                 <tbody>
                      {% for articulo in articulos %}
-                        {% if producto.codigoBarras != 0 %}
-                          {% if producto.stock < 5 %}
-                            <tr class="warning">
-                          {% else %}
-                            <tr>
-                          {% endif %}
-                                  <td class="gradeA">{{producto.codigoBarras}}</td>
-                                  <td>{{producto.descripcionProducto}}</td>
-                                  <td>{{producto.nombreMarca}}</td>
-                                  <td class="center">{{producto.precio}}</td>
-                                  <td class="center">{{producto.ganancia}}</td>
-                                    {% if producto.ganancia == 0 %}
-                                      <td class="center">{{producto.precio}}</td>
-                                    
-                                    {% else %}
-                                      <td class="center">{{producto.precioventa}}</td>
-                                     
-                                    {% endif %}
-                                  {% if producto.stock < 1 %}
-                                    <td class="center"> <span class="badge">Sin Stock</span></td>
-                                  {% else %}
-                                    <td class="center">{{producto.stock}}</td>
-                                  {% endif %}
-                                  
+                          <tr>
+                          
+                                  <td class="gradeA">{{articulo.descripcion}}</td>
+                                  <td>{{articulo.nombreMarca}}</td>
+                                  <td>{{articulo.precio}}</td>
+                                  <td class="center">{{articulo.ganancia}}</td>
+                                  <td class="center">{{articulo.precioventa}}</td>
                                   <td>
                                       <a href="../controller/editarProducto.php?id={{producto.idProducto}}"<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Editar</button></a>
                                       <a href="../controller/editarCodigo.php?id={{producto.idProducto}}&cod={{producto.codigoBarras}}"<button class="btn btn-success btn-xs"><i class="fa fa-pencil">   </i> Codigo</button></a>
@@ -68,7 +51,7 @@
                                    </td>
                              </tr>
 
-                        {% endif %}
+                        {# % endif % #}
                     {% endfor %}
                    
                 </tbody>

@@ -2,6 +2,7 @@
 
 	session_start();
 	require_once('./configTwig.php');
+	require_once('../model/abmUsados.php');
 	//require_once('../model/abmArticulos.php');
 	
 		if(isset($_SESSION['rol'])) {
@@ -21,7 +22,7 @@
 			 		$datos['error'] = true;
 			 	}
 			}
-		
+			$datos['articulos']=detalleUsados();
 			renderizar('articulos.html',$datos);
 		}
 		else{

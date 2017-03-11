@@ -35,18 +35,23 @@ function ultimoArticuloAgregado(){
 	return ($query -> fetchObject());
 }
 
-function agregarFoto($idArticulo, $nombreImagen){
+function listaUsados($tipo){
 	require_once('conexion.php');
-	$conexion = new Conexion();
-	$conexion->conectarBD();
-	$query = $conexion -> getConexion() -> prepare("INSERT INTO imagenes (idArticulo, nombreImagen) VALUES (?, ?)");
-	$query->execute(array($idArticulo, $nombreImagen));
-	$ok = false;
-	if ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-		$ok = true;
-	}
-	$conexion->desconectarBD();
-	return $ok;
+	$conexion=new Conexion();
+	$conexion -> conectarBD();
+	$query = $conexion -> getConexion() -> prepare("SELECT idArticulo, nombreImagen FROM usados u INNER JOIN imagenes i ON(u.idUsado = i.idArticulo) WHERE i.tipoArticulo=?");
+	$query -> execute(array($tipo));
+	$conexion -> desconectarBD();
+	return ($query -> fetchAll(PDO::FETCH_ASSOC));
 }
 
+function detalleUsados(){
+	require_once('conexion.php');
+	$conexion=new Conexion();
+	$conexion -> conectarBD();
+	$query = $conexion -> getConexion() -> prepare("SELECT * FROM usados u INNER JOIN marca m ON (u.idMarca = m.idMarca)");
+	$query -> execute(array());
+	$conexion -> desconectarBD();
+	return ($query -> fetchAll(PDO::FETCH_ASSOC));
+}
 ?>

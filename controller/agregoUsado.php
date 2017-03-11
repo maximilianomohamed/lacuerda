@@ -4,6 +4,7 @@
 	require_once('../model/abmMarca.php');
 	require_once('./configTwig.php');
 	require_once('../model/abmProducto.php');
+	require_once('../model/abmImagenes.php');
 	
 	$descripcion= $_POST['descripcion'];
 	$precio= $_POST['precio'];
@@ -21,12 +22,15 @@
 					$articuloReciente=ultimoArticuloAgregado();
 					$idArticulo=$articuloReciente->id;
 
-					//imagen
-					$nomImg=$idArticulo.".jpg";
-					copy($_FILES['foto']['tmp_name'],"../images/portfolio/accesorios/".$idArticulo.".jpg");
-		            //fin de la imagen
-
-		            agregarFoto($idArticulo,$nomImg);
+		            //imagen
+					agregarFotoN($idArticulo, 'usado');
+					$imagenReciente=ultimaImagen();
+					$idImagenUlt=$imagenReciente->id;
+					$extension = end((explode('.',$_FILES['foto']['name'])));
+					$nomImg=$idImagenUlt.'.'.$extension;
+					copy($_FILES['foto']['tmp_name'],"../images/portfolio/accesorios/".$nomImg);
+					actualizarDatosImagen($idImagenUlt, $nomImg);
+				    //fin de la imagen
 
 					header('Location: ../controller/articulos.php?correctamente');
 				
