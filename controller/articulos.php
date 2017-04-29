@@ -22,7 +22,7 @@
 			 		$datos['error'] = true;
 			 	}
 			}
-			$datos['articulos']=detalleUsados();
+			//$datos['articulos']=detalleUsados();
 			renderizar('articulos.html',$datos);
 		}
 		else{
