@@ -8,7 +8,7 @@
 	
 	$descripcion= $_POST['descripcion'];
 	$precio= $_POST['precio'];
-	$ganancia= $_POST['ganancia'];
+	$nombre= $_POST['nombre'];
 	$marca= $_POST['marca'];
 	$preciodeventa = $precio+(($precio * $ganancia)/100);
 	$preciodeventa = number_format($preciodeventa,2); 
@@ -18,7 +18,7 @@
 			//me fijo si ese producto ya existe
 			if(!(existeProducto($descripcion, $marca, $precio))){
 				//no existe entonces lo agrego
-					agregarProductoUsado($descripcion,$precio,$marca,$ganancia,$preciodeventa);
+					agregarProductoUsado($descripcion,$marca,$nombre, $precio);
 					$articuloReciente=ultimoArticuloAgregado();
 					$idArticulo=$articuloReciente->id;
 

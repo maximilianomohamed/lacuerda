@@ -6,7 +6,8 @@
 	$descripcion=$_POST['descripcion'];
 	$tipo=$_POST['tipo'];
 	$categoria=$_POST['categoria'];
-	agregarProductoNuevo($descripcion, $tipo, $categoria);
+	$nombre=$_POST['nombre'];
+	agregarProductoNuevo($descripcion, $tipo, $categoria, $nombre);
 	$articuloReciente=ultimoArticuloAgregadoN();
 	$idArticulo=$articuloReciente->id;
 	//imagen
