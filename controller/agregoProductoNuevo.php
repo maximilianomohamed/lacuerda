@@ -3,6 +3,7 @@
 	require_once('./configTwig.php');
 	require_once('../model/abmProductoNuevo.php');
 	require_once('../model/abmImagenes.php');
+
 	$descripcion=$_POST['descripcion'];
 	$tipo=$_POST['tipo'];
 	$categoria=$_POST['categoria'];

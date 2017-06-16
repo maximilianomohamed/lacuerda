@@ -4,18 +4,18 @@
  {% endblock %}
 {% block cabecera %}
     {% if detalles.estado != "Entregado" %}
-     <a href="../controller/editarReparacion.php?id={{detalles.idReparacion}}" ><button type="button" class="btn btn-success"><i class="fa fa-pencil ">  </i> Modificar</button></a> 
-     {% endif %}
+      <a href="../controller/editarReparacion.php?id={{detalles.idReparacion}}" ><button type="button" class="btn btn-success"><i class="fa fa-pencil "></i> Modificar</button></a> 
+    {% endif %}
      
-        <a href="../controller/imprimirReparacion.php?id={{detalles.idReparacion}}"  ><button type="button" class="btn btn-success"><i class="fa fa-print ">  </i> Imprimir</button></a>
+        <a href="../controller/imprimirReparacion.php?id={{detalles.idReparacion}}"  ><button type="button" class="btn btn-success"><i class="fa fa-print "></i> Imprimir</button></a>
      
-     {% if detalles.pagoLuthier == "Impago" and detalles.nombreLuthier != "-" and detalles.manoDeObra != 0 %}
-        <a data-toggle="modal" data-target="#confirm-pagar" href="#"><button class="btn btn-primary"><i class="fa fa-gavel "></i> Pagar a Luthier </button></a>
+     {% if detalles.pagoLuthier == "Impago" and detalles.nombreLuthier != "-" and detalles.manoDeObra != 0 and detalles.estado != "Cancelado" %}
+        <a data-toggle="modal" data-target="#confirm-pagar" href="#"><button class="btn btn-primary"><i class="fa fa-gavel "></i> Pagar a Luthier</button></a>
         
      {% endif %}
      {% if detalles.estado == "Para Retirar" %}
 
-        <a data-toggle="modal" data-target="#confirm-retirar" href="#"> <button class="btn btn-warning"><i class="fa fa-thumbs-o-up ">  </i> Retirar reparación</button></a>
+        <a data-toggle="modal" data-target="#confirm-retirar" href="#"> <button class="btn btn-warning"><i class="fa fa-thumbs-o-up "></i> Retirar reparación</button></a>
          
      {% endif %}
 {% endblock %}

@@ -1,7 +1,3 @@
- 
-window.onload = function() {
-    document.getElementById("codigo").focus();
-};
 
 //calcula la ganancia del producto
    
