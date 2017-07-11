@@ -68,9 +68,8 @@
                                  <select id="luthier" name="luthier" class="form-control" >
                                   <option value="{{detalle.idLuthier}}" selected="selected">{{detalle.nombreLuthier}}</option>
                                     {% for luthier in luthiers %}
-                                      {% if detalle.idLuthier != luthier.idLuthier %}
-                                         <option value='{{luthier.idLuthier}}'>{{luthier.nombreLuthier}}</option>
-                                      {% endif %}
+
+                                      <option value='{{luthier.idLuthier}}'>{{luthier.nombreLuthier}}</option>
                                     {% endfor %}
                                 </select>
                              {% endif %}
@@ -84,22 +83,13 @@
                                <label>Estado:</label>
                                <select id="estado" name="estado" class="form-control" >
                                   <option value="{{detalle.estado}}" selected="selected">{{detalle.estado}}</option>
-                                      {% if detalle.estado != "Ingresado" %}
-                                           <option value='Ingresado'>Ingresado</option>
-                                      {% endif %}
-                                      {% if detalle.estado != "Presupuestado" %}
+                                      <option value='Ingresado'>Ingresado</option>
                                       <option value='Presupuestado'>Presupuestado</option>
-                                      {% endif %}
-                                      {% if detalle.estado != "Cancelado" %}
+                                      
+                                      {% if detalle.precio != 0 %}
+                                        <option value='En Reparacion'>En Reparacion</option>
                                         <option value='Cancelado'>Cancelado</option>
-                                      {% endif %}
-                                      {% if detalle.precio != 0 and detalle.manoDeObra != 0 %}
-                                        {% if detalle.estado != "En Reparacion" %}
-                                        <option value='En Reparacion'>En Reparación</option>
-                                        {% endif %}
-                                        {% if detalle.estado != "Para Retirar" %}
                                         <option value='Para Retirar'>Para Retirar</option>
-                                        {% endif %}
                                       {% endif %}
                                  
                                 </select>

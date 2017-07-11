@@ -33,13 +33,4 @@ function listaProductosNuevos($tipoProducto){
 	return ($query -> fetchAll(PDO::FETCH_ASSOC));
 }
 
-function listaProductos(){
-	require_once('conexion.php');
-	$conexion=new Conexion();
-	$conexion -> conectarBD();
-	$query = $conexion -> getConexion() -> prepare("SELECT idImagen, idArticulo, i.nombreImagen as nombreImagen, p.descripcion as descripcionProducto, i.tipoArticulo as tipoArticulo FROM productonuevo p INNER JOIN imagenes i ON(p.id = i.idArticulo))");
-	$query -> execute(array());
-	$conexion -> desconectarBD();
-	return ($query -> fetchAll(PDO::FETCH_ASSOC));
-}
 ?>

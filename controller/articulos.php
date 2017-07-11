@@ -2,7 +2,8 @@
 
 	session_start();
 	require_once('./configTwig.php');
-	require_once('../model/abmProductoNuevo.php');
+	require_once('../model/abmUsados.php');
+	//require_once('../model/abmArticulos.php');
 	
 		if(isset($_SESSION['rol'])) {
 			$datos['user'] = $_SESSION['nombre'];
@@ -21,7 +22,7 @@
 			 		$datos['error'] = true;
 			 	}
 			}
-			$datos['articulos']=listaProductos();
+			//$datos['articulos']=detalleUsados();
 			renderizar('articulos.html',$datos);
 		}
 		else{

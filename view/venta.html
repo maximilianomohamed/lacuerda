@@ -378,23 +378,19 @@
 
 {% block scripts %}
  <script>
-    window.onload = function() {
-        document.getElementById("codigo").focus();
-    };
+function buscar() {
+    var textoBusqueda = $("input#busqueda").val();
+      $.post("../controller/buscar.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
+          $("#resultadoBusqueda").html(mensaje);
+      }); 
+    
+};
 
-    function buscar() {
-        var textoBusqueda = $("input#busqueda").val();
-          $.post("../controller/buscar.php", {valorBusqueda: textoBusqueda}, function(mensaje) {
-              $("#resultadoBusqueda").html(mensaje);
-          }); 
-        
-    };
-
-    $("#cuotas").change(function(){
-        var ventaEn = $('select[id=cuotas]').val();
-          $.post("../controller/ventaFormPago.php", {formaDePago: ventaEn}, function(mensaje) {
-              $("#page-wrapper").html(mensaje);
-          });
-    });
+$("#cuotas").change(function(){
+    var ventaEn = $('select[id=cuotas]').val();
+      $.post("../controller/ventaFormPago.php", {formaDePago: ventaEn}, function(mensaje) {
+          $("#page-wrapper").html(mensaje);
+      });
+});
 </script>
 {% endblock %}
