@@ -18,6 +18,12 @@
 	              <strong>Cuidado!!</strong> Aún no hay gastos cargados.
 	        </div>
 	{% endif %}
+    {% if noIngresos %}
+        <div class='alert alert-warning'>
+              <button type='button' class='close' data-dismiss='alert'>&times;</button>
+              <strong>Cuidado!!</strong> Aún no hay ingresos cargados.
+        </div>
+    {% endif %}
 	<div class="now">
 		
 			<div class="col-xs-9">
@@ -38,22 +44,23 @@
 	                                </tr>
 	                            </thead>
 	                            <tbody>
-	                                    {% for caja in cajas %}
-					                            <tr>
-					                                  <td class="gradeA">{{caja.fecha|date("d/m/Y")}}</td>
-					                                   <td class="gradeA">{{caja.ingreso}}</td>
-					                                   <td class="gradeA">{{caja.egreso}}</td>
-					                                   <td class="gradeA">{{caja.ganancia}}</td>
-					                                    <td>
-					                                      <a href="../controller/verGastos.php?mes={{caja.mes}}&anio={{caja.anio}}&tipo=saleCaja"<button class="btn btn-success btn-xs"><i class="fa fa-pencil">  </i>  Ver Egresos</button></a>
-					                                      {% if caja.estado == "Abierta" %}
-					                             				<a  data-toggle="modal" data-target="#cerrarCaja" href="#"<button class="btn btn-danger btn-xs"><i class="fa fa-dot-circle-o">  </i>  Cerrar Caja</button></a>
-				                                     	  {% endif %}
-					                                      
-					                                   </td>
-					                            </tr>
-					          
-					                    {% endfor %}
+	                                {% for caja in cajas %}
+                                            <tr>
+                                                  <td class="gradeA">{{caja.fecha|date("d/m/Y")}}</td>
+                                                   <td class="gradeA">{{caja.ingreso}}</td>
+                                                   <td class="gradeA">{{caja.egreso}}</td>
+                                                   <td class="gradeA">{{caja.ganancia}}</td>
+                                                    <td>
+                                                      <a href="../controller/verGastos.php?mes={{caja.mes}}&anio={{caja.anio}}&tipo=saleCaja"<button class="btn btn-success btn-xs"><i class="fa fa-pencil">  </i>  Ver Egresos</button></a>
+                                                      {% if caja.estado == "Abierta" %}
+                                                                        <a  data-toggle="modal" data-target="#cerrarCaja" href="#"<button class="btn btn-danger btn-xs"><i class="fa fa-dot-circle-o">  </i>  Cerrar Caja</button></a>
+                                                  {% endif %}
+                                                  <a href="../controller/verIngreso.php?mes={{caja.mes}}&anio={{caja.anio}}"<button class="btn btn-primary btn-xs"><i class="fa fa-pencil">  </i> Ver Ingresos</button></a>
+
+                                                   </td>
+                                            </tr>
+
+                                        {% endfor %}
 	                            </tbody>
 	                        </table>
 	                    </div>

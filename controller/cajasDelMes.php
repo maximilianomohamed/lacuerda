@@ -74,6 +74,9 @@
 		if(isset($_GET['noGastos'])){
 			$datos['noGastos'] = true;
 		}
+                if(isset($_GET['noIngresos'])){
+			$datos['noIngresos'] = true;
+		}
 		renderizar('cajaMesActual.html',$datos);
 	}
 	else{

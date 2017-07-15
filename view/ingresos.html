@@ -1,0 +1,38 @@
+{% extends direccion %}
+ {% block titulo %}
+      Ingresos de {{mes}} del {{anio}}
+ {% endblock %}
+{% block cabecera %}
+	Informe de todas las ventas del mes de {{mes}}   
+{% endblock %}
+{% block contenido %}
+
+	<div class="table-responsive">
+        
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Forma de pago</th>
+                        <th>Monto</th>
+                        <th>Empleado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ingreso in ingresos %}
+                        <tr>
+                            <td>{{ingreso.fecha|date("d/m/Y")}}</td>
+                            <td>{{ingreso.tipo_venta}}</td>
+                            <td>{{ingreso.total}}</td>
+                            <td>{{ingreso.username}}</td>
+                            <td><a href="../controller/detalleVenta.php?id={{ingreso.id}}"<button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i>Ver detalle</button></a></td>
+                        </tr>                                
+                    {% endfor %}                   
+                </tbody>
+            </table>
+         
+        </div>
+        
+
+{% endblock%}
