@@ -49,7 +49,17 @@ function detalleUsados(){
 	require_once('conexion.php');
 	$conexion=new Conexion();
 	$conexion -> conectarBD();
-	$query = $conexion -> getConexion() -> prepare("SELECT * FROM usados u INNER JOIN marca m ON (u.idMarca = m.idMarca)");
+	$query = $conexion -> getConexion() -> prepare("SELECT idUsado, nombre, descripcion FROM usados");
+	$query -> execute(array());
+	$conexion -> desconectarBD();
+	return ($query -> fetchAll(PDO::FETCH_ASSOC));
+}
+
+function detalleNuevos(){
+	require_once('conexion.php');
+	$conexion=new Conexion();
+	$conexion -> conectarBD();
+	$query = $conexion -> getConexion() -> prepare("SELECT id, nombre, descripcion FROM productonuevo");
 	$query -> execute(array());
 	$conexion -> desconectarBD();
 	return ($query -> fetchAll(PDO::FETCH_ASSOC));

@@ -22,7 +22,8 @@
 			 		$datos['error'] = true;
 			 	}
 			}
-			//$datos['articulos']=detalleUsados();
+			$datos['articulosNuevos']=detalleNuevos();
+			$datos['articulosUsados']=detalleUsados();
 			renderizar('articulos.html',$datos);
 		}
 		else{
