@@ -64,4 +64,13 @@ function detalleNuevos(){
 	$conexion -> desconectarBD();
 	return ($query -> fetchAll(PDO::FETCH_ASSOC));
 }
+
+function eliminarArticuloUsado($id){
+    require_once('conexion.php');
+    $conexion=new Conexion();
+    $conexion -> conectarBD();
+    $query = $conexion -> getConexion() -> prepare("DELETE FROM usados WHERE idUsado=?");
+    $query -> execute(array($id));
+    $conexion -> desconectarBD();
+}
 ?>

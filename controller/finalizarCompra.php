@@ -52,21 +52,24 @@
 					
 			}
 			else{
-				
-                            $tipo='tarjeta';
-                            cargarRegistro($total, $fecha, $usuario, $tipo );
-                            $ultimaVenta=obtenerVenta();
-                            $ultVenta=$ultimaVenta->id;
-                            $productos=obtenerProductos();
-                            foreach ($productos as $prod){
-                                cargarDetalle($ultVenta, $prod['idProducto'], $prod['cantidad'], $prod['precio']);
-                            }
-                            
                             //es una venta realizada por tarjeta entonces la sumo a la tarjeta por separado.
                             $cantCuotas = $_POST['venta'];
                             $porcentaje = porcentajeDeLaCuota($cantCuotas);
                             $total = ($total*$porcentaje/100)+ $total;
                             agregarATarjeta($total, $fecha, $mesActual, $anioActual,$cantCuotas);
+                            
+                            //Empieza el registro
+                            $tipo='tarjeta';
+                            cargarRegistro($total, $fecha, $usuario, $tipo );
+                            $ultimaVenta=obtenerVenta();
+                            $ultVenta=$ultimaVenta->id;				
+                            $productos=obtenerProductos();
+                            foreach ($productos as $prod){
+                                $productoConCoeficiente=($prod['precio'] * $porcentaje/100) + $prod['precio'];
+                                cargarDetalle($ultVenta, $prod['idProducto'], $prod['cantidad'], $productoConCoeficiente);
+                            }
+                            //Fin del registro
+                            
                             cancelarCompra();
                             if(existeProductoId(1111111111)){
                                     eliminarProducto(1111111111);
